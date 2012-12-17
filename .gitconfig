@@ -1,3 +1,13 @@
 [user]
-	name = Yann Moisan
-	email = yamo93@gmail.com
+    name = Yann Moisan
+    email = yamo93@gmail.com
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log -p
+    lg1 = log --pretty=format:'%h - %an, %ar : %s'
+    lg2 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
