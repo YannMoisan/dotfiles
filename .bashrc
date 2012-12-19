@@ -109,6 +109,11 @@ alias bkp="cd /mnt/data/backup/dev/projects/bluekarma"
 alias todo="vim /mnt/data/backup/application/divers/TODO.txt"
 alias h=history
 
+alias agi='sudo apt-get install'
+alias agr='sudo apt-get remove'
+alias agu='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
+alias acs='apt-cache search'
+
 export CLUSTERING=/data/client/clustering
 export SCRIPT=/mnt/data/backup/dev/script/
 function cl() {
