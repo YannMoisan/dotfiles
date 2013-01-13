@@ -121,3 +121,5 @@ function cl() {
 }
 
 export PATH=/opt/sbt/bin:$PATH
+alias idea="/opt/idea-IC-123.72/bin/idea.sh"
+alias mongo="/opt/mongodb-linux-x86_64-2.2.1/bin/mongod --dbpath /mnt/data/db"
