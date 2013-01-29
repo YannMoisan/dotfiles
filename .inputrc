@@ -1,2 +1,10 @@
+#By default, C-x C-r is bound to re-read-init-file
+
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+
+set show-all-if-ambiguous on
+set visible-stats on
+
+# strange : "\M-s" doesn't work
+"\es": menu-complete
