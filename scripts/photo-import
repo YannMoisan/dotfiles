@@ -1,0 +1,27 @@
+#! /bin/sh
+# Importe et classe les fichiers (images et videos) de l'appareil photo.
+# Ne supprime pas les photos originales de l'appareil.
+
+mydate=`date +%Y%m%d`
+DEST_DIR=~/import$mydate
+
+command -v gphoto2 >/dev/null 2>&1 || { echo >&2 "I require gphoto2 but it's not installed.  Aborting."; exit 1; }
+command -v exiftool >/dev/null 2>&1 || { echo >&2 "I require exiftool but it's not installed.  Aborting."; exit 1; }
+
+mkdir $DEST_DIR
+cd $DEST_DIR
+
+gphoto2 --auto-detect|grep Canon
+if [ $? -ne 0 ]
+then
+    echo "Erreur: vérifier que l'appareil est allumé et connecté."
+    exit 1
+fi
+
+gphoto2 --get-all-files >/dev/null 2>&1
+if [ $? -ne 0 ]
+then
+    echo "Erreur: vérifier que l'appareil n'est pas monté."
+    exit 1
+fi
+exiftool -ext JPG -ext AVI "-Directory<DateTimeOriginal" -d "%Y-%m-%d" .
