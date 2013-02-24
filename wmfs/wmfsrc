@@ -55,6 +55,54 @@
      client_border_width = 1
 
    [/theme]
+   
+   [theme]
+     # No name mean default
+     name = "solarized"
+
+     font = "fixed"
+
+     # Bars
+     bars_width = 14
+     bars_fg = "#839496"
+     bars_bg = "#002b36"
+
+     # Element tags
+     tags_normal_fg = "#839496"
+     tags_normal_bg = "#002b36"
+     # tags_normal_statusline = ""
+
+     tags_sel_fg    = "#223322"
+     tags_sel_bg    = "#b58900"
+     # tags_sel_statusline = ""
+
+     tags_occupied_fg = "#AABBAA"
+     tags_occupied_bg = "#073642"
+     tags_occupied_statusline = "\R[0;0;100;1;#AABBAA]"
+
+     tags_urgent_fg    = "#223322"
+     tags_urgent_bg    = "#CC5544"
+     # tags_urgent_statusline = ""
+
+     tags_border_color = "#112211"
+     tags_border_width = 0
+
+     # Frame / Client
+     client_normal_fg = "#839496"
+     client_normal_bg = "#073642"
+     client_normal_statusline = "\s[3;9;#121212;x] \s[2;8;#ff0000;x](1;client_close)"
+
+     client_sel_fg = "#223322"
+     client_sel_bg = "#b58900"
+     client_sel_statusline = "\s[3;9;#121212;x] \s[2;8;#ff0000;x](1;client_close)"
+
+     # client_free_statusline = ""
+
+     frame_bg = "#555555"
+     client_titlebar_width = 12
+     client_border_width = 1
+
+   [/theme]
 
 [/themes]
 
@@ -77,7 +125,7 @@
      position = 0
      screen = 0
      elements = "tlsy"   # element order in bar
-     theme = "default"
+     theme = "solarized"
   [/bar]
 
 # [bar]
@@ -124,7 +172,7 @@
   # Give focus to new created client (default = false)
   autofocus = false
 
-  theme = "default"
+  theme = "solarized"
   key_modifier = "Super"
 
   # Focus type:
