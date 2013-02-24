@@ -1,5 +1,12 @@
 URxvt.font: xft:inconsolata:size=10
 
+! Fix font space
+URxvt*letterSpace: -1
+ 
+! Scrollbar
+URxvt.scrollStyle: rxvt
+URxvt.scrollBar: false
+
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
@@ -7,6 +14,9 @@ URxvt.matcher.button:   1
 URxvt.keysym.C-Delete:  perl:matcher:last
 URxvt.keysym.M-Delete:  perl:matcher:list
 
+URxvt.colorIT:      #87af5f
+URxvt.colorBD:      #d7d7d7
+URxvt.colorUL:      #87afd7
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
