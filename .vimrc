@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 syntax on
 filetype plugin indent on " enable detection, plugins and indenting in one step
 
