@@ -1,0 +1,55 @@
+#! /bin/sh -
+# Script pour automatiser le backup de l'ordi perso
+
+shared_dir=/mnt/data/backup
+
+regular="
+/etc/fstab 
+/etc/apt/sources.list 
+/boot/grub/grub.cfg 
+$shared_dir/Drine
+$shared_dir/application
+$shared_dir/dev
+$shared_dir/download
+$shared_dir/photos
+$HOME/.purple/accounts.xml
+$HOME/.mozilla
+$HOME/.thunderbird"
+
+destdir="/media/Elements/Backups"
+
+# --------------------------------------------------------------------------------
+# Methods declaration
+# --------------------------------------------------------------------------------
+# syntax log methodName message
+log() {
+    echo "[$1] $2";
+}
+
+copy_elements () {
+    for element in $1
+    do
+        log copy_elements "file:$element"
+        rsync -av --delete --link-dest=$destdir/backup.1 $element $destdir/backup.0
+    done
+}
+# --------------------------------------------------------------------------------
+# Main
+# --------------------------------------------------------------------------------
+
+log main "Script Name: $0"
+log main "Destination directory: $destdir"
+
+start_time=`date +%s`
+
+rm -rf $destdir/backup.3
+mv $destdir/backup.2 $destdir/backup.3
+mv $destdir/backup.1 $destdir/backup.2
+mv $destdir/backup.0 $destdir/backup.1
+mkdir $destdir/backup.0
+
+copy_elements "$regular"
+end_time=`date +%s`
+duration=`expr $end_time - $start_time`
+echo $duration
+exit 0
