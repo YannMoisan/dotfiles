@@ -7,16 +7,33 @@ URxvt*letterSpace: -1
 URxvt.scrollStyle: rxvt
 URxvt.scrollBar: false
 
-URxvt.perl-ext-common:  default,matcher
+URxvt.perl-ext-common:  default,matcher,font-size,clipboard
 URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
+
+! extensions -> font-size
+! https://github.com/majutsushi/urxvt-font-size
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
 
 URxvt.keysym.C-Delete:  perl:matcher:last
 URxvt.keysym.M-Delete:  perl:matcher:list
 
+! extensions -> clipboard (requires xsel)
+! https://github.com/muennich/urxvt-perls
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+
+URxvt*urgentOnBell: true
+
 URxvt.colorIT:      #87af5f
 URxvt.colorBD:      #d7d7d7
 URxvt.colorUL:      #87afd7
+
+! Deactivate KEYCAP PICTURE INSERT MODE when C-S are pressed
+URxvt*iso14755 : false
+URxvt*iso14755_52 : false
+
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
