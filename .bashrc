@@ -124,6 +124,6 @@ function cl() {
 
 export PATH=/opt/sbt/bin:/opt/apache-maven-3.0.4/bin:$PATH
 alias idea="/opt/idea-IC-123.72/bin/idea.sh"
-alias mongo="/opt/mongodb-linux-x86_64-2.2.1/bin/mongod --dbpath /mnt/data/db"
+alias mongo="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
 
 source ~/liquidprompt/liquidprompt
