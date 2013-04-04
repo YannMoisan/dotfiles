@@ -102,6 +102,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+CDPATH=.:~:/mnt/data/backup/dev/projects/
+
 alias dush="du -sh | sort -h | tail"
 alias projects="cd /mnt/data/backup/dev/projects"
 alias bkd="cd /mnt/data/backup/dev/realisation/atos/13\ -\ Bluekiwi/"
