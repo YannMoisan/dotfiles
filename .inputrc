@@ -1,10 +1,32 @@
-#By default, C-x C-r is bound to re-read-init-file
+# ~/.inputrc: used by the GNU readline library.
+# Use C-x C-r to reload this configuration file.
 
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+set bell-style visible
 
+# lazy tab completion
 set show-all-if-ambiguous on
-set visible-stats on
+set completion-ignore-case on
+set completion-map-case on
 
-# strange : "\M-s" doesn't work
-"\es": menu-complete
+# Vim-style word movement: Alt+[w|e|b]
+"\ew": forward-word
+"\ee": forward-word
+"\eb": backward-word
+
+# Alt+[h|l]
+"\eh": beginning-of-line
+"\el": end-of-line
+"\M-h": beginning-of-line
+"\M-l": end-of-line
+
+# Vim-style history search: Alt+[j|k]
+"\ej": history-search-forward
+"\ek": history-search-backward
+"\M-j": history-search-forward
+"\M-k": history-search-backward
+
+# Alt+r/s instead of Ctrl+r/s
+"\er": reverse-search-history
+"\es": forward-search-history
+"\M-r": reverse-search-history
+"\M-s": forward-search-history
