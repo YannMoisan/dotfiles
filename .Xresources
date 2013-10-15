@@ -4,6 +4,7 @@ URxvt.font: xft:inconsolata:size=10
 URxvt*letterSpace: -1
  
 ! Scrollbar
+URxvt*saveLines: 10000
 URxvt.scrollStyle: rxvt
 URxvt.scrollBar: false
 
