@@ -16,7 +16,7 @@ $HOME/.purple/accounts.xml
 $HOME/.mozilla
 $HOME/.thunderbird"
 
-destdir="/media/Elements/Backups"
+destdir="/mnt/usb/Backups"
 
 # --------------------------------------------------------------------------------
 # Methods declaration
