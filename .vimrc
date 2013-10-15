@@ -35,6 +35,8 @@ set hidden
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+set wildignore=**/target/*
+
 " change the mapleader from \ to ,
 let mapleader=","
 
@@ -106,6 +108,8 @@ noremap <Leader><Leader> <C-^>
 
 "clear highlighted searches
 nmap <silent> ,/ :nohlsearch<CR>
+
+map <F5> :!ctags -R
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
