@@ -125,4 +125,25 @@ nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
 "let g:ctrlp_map=',c'
 let g:ctrlp_map = '<c-p>'
 
+let g:ctrlp_root_markers = ['.ctrlp']
+
 let s:tlist_def_scala_settings = 'scala;t:trait;c:class;T:type;m:method;C:constant;l:local;p:package;o:object'
+
+nmap <F8> :TagbarToggle<CR>
+
+"use conf in vim-scala/plugin.vim
+"let g:tagbar_type_scala = {
+"    \ 'ctagstype' : 'Scala',
+"    \ 'kinds'     : [
+"        \ 'p:packages:1',
+"        \ 'V:values',
+"        \ 'v:variables',
+"        \ 'T:types',
+"        \ 't:traits',
+"        \ 'o:objects',
+"        \ 'a:aclasses',
+"        \ 'c:classes',
+"        \ 'r:cclasses',
+"        \ 'm:methods'
+"    \ ]
+"    \ }
