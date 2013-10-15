@@ -81,7 +81,7 @@ nnoremap <leader>v <C-w>v<C-w>l
 nnoremap ŭ <C-w>v<C-w>l
 
 " open a horizontal split (s)
-nnoremap <leader>v <C-w>s
+nnoremap <leader>s <C-w>s
 nnoremap ß <C-w>s
 
 "Quick buffer navigation
