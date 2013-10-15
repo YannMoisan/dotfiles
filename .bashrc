@@ -110,7 +110,7 @@ CDPATH=.:~:/mnt/data/backup/dev/projects/
 alias dush="du -sh | sort -h | tail"
 alias projects="cd /mnt/data/backup/dev/projects"
 alias bkd="cd /mnt/data/backup/dev/realisation/atos/13\ -\ Bluekiwi/"
-alias bkp="cd /mnt/data/backup/dev/projects/bluekarma"
+alias bkp="cd /mnt/data/backup/dev/projects/bluekarma/bluekarma-analytics-scala-play2"
 alias todo="vim /mnt/data/backup/application/divers/TODO.txt"
 alias h=history
 
