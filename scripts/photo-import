@@ -8,7 +8,7 @@ DEST_DIR=~/import$mydate
 command -v gphoto2 >/dev/null 2>&1 || { echo >&2 "I require gphoto2 but it's not installed.  Aborting."; exit 1; }
 command -v exiftool >/dev/null 2>&1 || { echo >&2 "I require exiftool but it's not installed.  Aborting."; exit 1; }
 
-mkdir $DEST_DIR
+[ ! -d $DEST_DIR ] && mkdir $DEST_DIR
 cd $DEST_DIR
 
 gphoto2 --auto-detect|grep Canon
