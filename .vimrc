@@ -35,7 +35,11 @@ set hidden
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+set wildmenu " Enhanced command line completion.
+set wildmode=list:longest " Complete files like a shell.
 set wildignore=**/target/*
+
+set clipboard=unnamedplus "Feed automatically the clipboard with the content of the unnamed register (works in both direction)
 
 " change the mapleader from \ to ,
 let mapleader=","
