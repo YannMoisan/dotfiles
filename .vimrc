@@ -101,7 +101,10 @@ noremap <silent> <Esc>U :exe "tabmove " .(tabpagenr()-2)<CR>
 noremap <silent> <Esc>I :exe "tabmove " . tabpagenr()<CR>
 
 " automatically reload vimrc when it's saved
-au BufWritePost .vimrc so ~/.vimrc
+augroup filetype_vimrc
+    autocmd!
+    autocmd BufWritePost .vimrc so ~/.vimrc
+augroup END
 
 noremap H ^
 noremap L $
