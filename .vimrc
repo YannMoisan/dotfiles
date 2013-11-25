@@ -67,6 +67,23 @@ imap <right> <nop>
 :inoremap jj <Esc>
 
 nnoremap <Enter> g<c-]>
+autocmd filetype qf map <buffer> <cr> <cr>
+
+" vaste.net
+:map vp :exec "w !vpaste ft=".&ft<CR>
+:vmap vp <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
+
+" paste in insertion mode, without auto-indent, (<C-r>* auto-indent)
+inoremap KJ <C-O>"*p
+
+" Alternative: Space/BackSpace for Page Down/Up
+noremap <BS> <PageUp>
+noremap <Space> <PageDown>
+
+" http://www.43folders.com/2004/09/15/how-does-a-nerd-hack-gtd
+nnoremap <leader>tn /TODOo    [ ] 
+nnoremap <leader>tx ^lrX
+nnoremap <leader>tw dd/@waiting<CR>p
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
