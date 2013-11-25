@@ -44,6 +44,12 @@ set clipboard=unnamedplus "Feed automatically the clipboard with the content of 
 " change the mapleader from \ to ,
 let mapleader=","
 
+"persistent undo 
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
 " configure solarized color theme
 if has('gui_running')
     set background=light
