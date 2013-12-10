@@ -1,0 +1,58 @@
+general {}
+
+# order += 'run_watch DHCP'
+# order += 'run_watch VPN'
+# order += 'ethernet eth0'
+# order += 'wireless wlan0'
+order += 'volume master'
+order += 'battery 0'
+order += 'disk /'
+order += 'cpu_temperature 0'
+order += 'load'
+order += 'time'
+
+battery 0 {
+	format = '♥: %status - %percentage - %remaining'
+}
+
+ethernet eth0 {
+	format_up   = 'E: %ip | %speed'
+}
+
+wireless wlan0 {
+	format_up   = 'W: %ip | %quality - %essid'
+}
+
+run_watch DHCP {
+	#pidfile = '/var/run/dhclient*.pid'
+	pidfile = '/var/run/sendsigs.omit.d/network-manager.dhclient-eth2.pid'
+}
+
+run_watch VPN {
+	#pidfile = '/var/run/vpnc/pid'
+	pidfile = '/var/run/openvpn.vpndc.pid'
+	format  = '%title(%status)'
+}
+
+cpu_temperature 0 {
+	format = 'T: %degrees °C'
+}
+
+disk '/' {
+	format = '~: %free'
+}
+
+load {
+	format = 'L: %1min'
+}
+
+time {
+	format = '%Y-%m-%d %a %H:%M:%S'
+}
+
+volume master {
+	format = "♪: %volume"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
