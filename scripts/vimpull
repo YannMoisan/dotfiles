@@ -1,8 +1,16 @@
 #!/bin/bash
 
-# prerequisite
+# prerequisites
 # vim must be lauched in servermode, check that with vim --serverlist
-# .vimrc must contains :set autoread to avoid prompt message
+# .vimrc must contain :set autoread to avoid prompt message
 
 git pull
-vim --remote-send ":checkt<CR>"
+if [ "X$(vim --serverlist)" == "X" ] 
+then
+    echo "You must launch vim in server mode for automatic refresh"
+    echo "vim --servername vim"
+    exit 1
+else
+    [ $(vim --remote-expr "&autoread") == 0 ] && echo "You should consider adding :set autoread to your .vimrc"
+    vim --remote-send ":checkt<CR>"
+fi
