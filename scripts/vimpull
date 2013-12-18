@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# prerequisite
+# vim must be lauched in servermode, check that with vim --serverlist
+# .vimrc must contains :set autoread to avoid prompt message
+
+git pull
+vim --remote-send ":checkt<CR>"
