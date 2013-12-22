@@ -132,3 +132,7 @@ alias mongo="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
 
 source ~/liquidprompt/liquidprompt
 EDITOR=vim
+
+fortune | ponysay
+
+export LANG=en_US.UTF-8
