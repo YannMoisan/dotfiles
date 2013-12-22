@@ -41,10 +41,14 @@ set wildignore=**/target/*
 
 set clipboard=unnamedplus "Feed automatically the clipboard with the content of the unnamed register (works in both direction)
 
+"If you have :set autoread in Vim, use :checktime after pulling from hg/git to
+"load all the new changes into existing buffers.
+set autoread
+
 " change the mapleader from \ to ,
 let mapleader=","
 
-"persistent undo 
+"persistent undo :help new-persistent-undo
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
@@ -179,3 +183,13 @@ nmap <F8> :TagbarToggle<CR>
 "        \ 'm:methods'
 "    \ ]
 "    \ }
+"
+
+"Error format for SBT, and shortcut to open SBT quickfix file :
+"-----vim.rc-------
+set errorformat=%E\ %#[error]\ %#%f:%l:\ %m,%-Z\ %#[error]\ %p^,%-C\ %#[error]\ %m
+set errorformat+=,%W\ %#[warn]\ %#%f:%l:\ %m,%-Z\ %#[warn]\ %p^,%-C\ %#[warn]\ %m
+set errorformat+=,%-G%.%#
+noremap <silent> <Leader>ff :cf /tmp/sbt.quickfix<CR>
+noremap <silent> <Leader>fn :cn<CR>
+
