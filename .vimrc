@@ -193,3 +193,9 @@ set errorformat+=,%-G%.%#
 noremap <silent> <Leader>ff :cf /tmp/sbt.quickfix<CR>
 noremap <silent> <Leader>fn :cn<CR>
 
+" config for cra.vim
+autocmd! BufWritePost cra.vim source <afile>
+
+let g:NbCPPerYear = 22
+let g:NbRTPerYear = 9
+let g:NbRemainingCP = 18
