@@ -1,0 +1,32 @@
+#!/bin/bash
+# As a geek, I used to live in plain text files
+# This script helps me to open them easily
+# first arg is a file which contains a list of absolute path to files to open
+
+while read line
+do
+    array+=("$line")
+done < $1
+
+# create an array with only basename
+# in order to not show the full path on dmenu entries
+for (( i = 0 ; i < ${#array[@]} ; i++ )) do
+    array2+=("$(basename ${array[i]})")
+done
+
+# pass this array to dmenu
+OLDIFS="$IFS"; IFS=$'\n'
+value=$(echo "${array2[*]}" | dmenu)
+IFS="$OLDIFS"
+
+# find index of selected element
+ret=-1
+for (( i = 0 ; i < ${#array2[@]} ; i++ ))
+do
+    if [ "${array2[$i]}" == "$value" ] ; then
+        ret=$i
+    fi
+done
+
+# launch vim on selected element
+vim ${array[$ret]}
