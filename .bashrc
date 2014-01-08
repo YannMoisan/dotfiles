@@ -125,7 +125,7 @@ function cl() {
     echo "$1" >> $SCRIPT/yamocl.sh
 }
 
-export PATH=~/.gem/ruby/2.0.0/bin:/mnt/data/backup/dev/projects/dotfiles/scripts:/opt/sbt/bin:/opt/apache-maven-3.0.4/bin:$PATH
+export PATH=/opt/scala-2.10.1/bin:~/.gem/ruby/2.0.0/bin:/mnt/data/backup/dev/projects/dotfiles/scripts:/opt/sbt/bin:/opt/apache-maven-3.0.4/bin:$PATH
 
 alias idea="/opt/idea-IC-123.72/bin/idea.sh"
 alias mongod="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
@@ -134,5 +134,9 @@ source ~/liquidprompt/liquidprompt
 EDITOR=vim
 
 fortune | ponysay
+function _cat() {
+    pygmentize $@ 2>/dev/null || cat $@
+}
+alias cat='_cat'
 
 export LANG=en_US.UTF-8
