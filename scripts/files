@@ -3,10 +3,13 @@
 # This script helps me to open them easily
 # first arg is a file which contains a list of absolute path to files to open
 
+selector=$@
+
 while read line
 do
     array+=("$line")
-done < $1
+done
+#</dev/stdin
 
 # create an array with only basename
 # in order to not show the full path on dmenu entries
@@ -16,7 +19,7 @@ done
 
 # pass this array to dmenu
 OLDIFS="$IFS"; IFS=$'\n'
-value=$(echo "${array2[*]}" | dmenu)
+value=$(echo "${array2[*]}" | $selector)
 IFS="$OLDIFS"
 
 # find index of selected element
@@ -28,5 +31,8 @@ do
     fi
 done
 
-# launch vim on selected element
+# Reassigns standard input back to the keyboard
+exec </dev/tty
+
+# launch your favorite editor on selected element
 vim ${array[$ret]}
