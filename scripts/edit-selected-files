@@ -1,0 +1,31 @@
+#!/bin/bash
+# As a geek, I used to live in plain text files
+# This script helps me to open them easily
+
+# Usage:
+# cat <<EOF | files dmenu
+# /path/to/file1
+# /path/to/file2
+# EOF
+
+selector=$@
+
+declare -A Array
+
+while read file
+do
+    key=$(basename $file)
+    Array[$key]=$file
+    #array+=("$line")
+done
+#</dev/stdin
+
+selected_files=$(echo ${!Array[@]} | tr ' ' '\n' | $selector)
+for file in $selected_files; do
+    files="$files ${Array[$file]}"
+done
+
+# Reassigns standard input back to the keyboard
+exec </dev/tty
+#$EDITOR $files
+vim $files
