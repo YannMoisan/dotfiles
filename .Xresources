@@ -1,3 +1,27 @@
+! Take effect immediately
+! xrdb -merge ~/.Xresources
+
+!If URxvt.meta8 is true, <ALT><key> sends an 8-bit character and sens
+!the Meta flag, which means you have to write your maps for <M-mumble>:
+!default is false (which is good according kaze)
+
+! to be tested with meta sends esc
+! Using urxvt (rxvt-unicode) with --meta8 the alt key combinations gave cryptic characters (mostly with accents, like ì) as output instead of the Alt key mapping. Solution:
+!Set termencoding=latin1
+
+!quand tu presses Alt+o, ça fait soit un truc genre ẅ (= un “o” avec le 8ème bit à 1), soit un <Esc>o
+!ça dépend si ton “meta sends escape” ou pas
+!sur xterm et gVim, par défaut Alt+o = ẅ
+!sur urxvt et tous les terms modernes, Alt+o = <Esc>o
+
+!TODO eclaircir cela ?
+!or, pour Vim, <M-o> et ï c’est rigoureusement pareil
+!du coup tu risques de déclencher la commande que t’as voulu mapper sur <Alt-o> en faisant un ï
+!d'où les raccourcis en Esc pour contourner le problème…
+!“ê” faisait la même chose que Alt+j
+!@kaze | pour une raison qui m’échappe, Alt+O est reconnu comme un caractère bizarre donc j’ai du le désactiver
+
+
 URxvt.font: xft:inconsolata:size=10
 
 ! Fix font space
