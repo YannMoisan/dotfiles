@@ -30,7 +30,7 @@ copy_elements () {
     for element in $1
     do
         log copy_elements "file:$element"
-        rsync -av --delete --link-dest=$destdir/backup.1 $element $destdir/backup.0
+        rsync -av --exclude=target/ --exclude=".git/" --delete --link-dest=$destdir/backup.1 $element $destdir/backup.0
     done
 }
 # --------------------------------------------------------------------------------
