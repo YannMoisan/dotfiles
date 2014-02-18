@@ -131,12 +131,22 @@ alias idea="/opt/idea-IC-123.72/bin/idea.sh"
 alias mongod="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
 
 source ~/liquidprompt/liquidprompt
-EDITOR=vim
+export EDITOR=vim
 
 fortune | ponysay
 function _cat() {
     pygmentize $@ 2>/dev/null || cat $@
 }
 alias cat='_cat'
-
+function _f() {
+cat <<EOF | files dmenu
+/mnt/data/backup/application/divers/TODO.txt
+/mnt/data/backup/application/divers/pad.txt
+EOF
+}
+alias f='_f'
+alias mntusb='sudo mount -o uid=yamo,gid=users /dev/sdb /mnt/usb'
+alias dhcp='sudo netcfg -u ethernet-dhcp'
+alias vbox='sudo modprobe -a vboxnetadp vboxnetflt vboxpci'
 export LANG=en_US.UTF-8
+
