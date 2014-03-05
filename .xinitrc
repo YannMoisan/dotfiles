@@ -16,25 +16,12 @@ syndaemon -t -k -i 2 -d &
 
 xset -b
 
-# test xkbmap avant xkbcomp
-setxkbmap -option terminate:ctrl_alt_bksp
-xkbcomp -w9 lafayette.xkb $DISPLAY
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 synclient PalmDetect=1
 
-# Disable Trackpad while Typing 
-# syndaemon -t -k -i 2 -d &
-
-# exec gnome-session
-# exec startkde
-#exec startxfce4
-#exec ck-launch-session dbus-launch wmfs &
-#exec wmfs &
-#wmpid=$! # ici nous sauvegardons le PID de wmfs
-
 #feh --bg-scale /path/to/your/wallpaper
-#pcmanfm --desktop
-#$HOME/.config/wmfs/status.sh
 
-#wait $wmpid # ici on attend la fin de wmfs WMFS, quand l'utilisateur lance un : wmfs -c quit :(
+#Start the udiskie service, before the window manager is loaded.
+udiskie --tray &
+
 exec i3
