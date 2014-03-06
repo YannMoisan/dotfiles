@@ -111,7 +111,6 @@ export CLUSTERING=/data/client/clustering
 export SCRIPT=/mnt/data/backup/dev/script/
 export PATH=/opt/scala-2.10.1/bin:~/.gem/ruby/2.0.0/bin:/mnt/data/backup/dev/projects/dotfiles/scripts:/opt/sbt/bin:/opt/apache-maven-3.0.4/bin:$PATH
 export EDITOR=vim
-export LANG=en_US.UTF-8
 
 function cl() {
     echo "$1" >> $SCRIPT/yamocl.sh
