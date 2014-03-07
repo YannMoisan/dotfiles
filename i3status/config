@@ -3,24 +3,28 @@ general {}
 # order += 'run_watch DHCP'
 # order += 'run_watch VPN'
 # order += 'ethernet eth0'
-# order += 'wireless wlan0'
+order += 'wireless wlo1'
 order += 'volume master'
 order += 'battery 0'
-order += 'disk /'
+#order += 'disk /'
 order += 'cpu_temperature 0'
 order += 'load'
 order += 'time'
 
 battery 0 {
 	format = '♥: %status - %percentage - %remaining'
+    integer_battery_capacity = true
+    low_threshold = 30
+    threshold_type = percentage
 }
 
 ethernet eth0 {
 	format_up   = 'E: %ip | %speed'
 }
 
-wireless wlan0 {
-	format_up   = 'W: %ip | %quality - %essid'
+wireless wlo1 {
+	#format_up   = 'W: %ip | %quality - %essid'
+	format_up   = 'W: %essid (%quality)'
 }
 
 run_watch DHCP {
@@ -47,7 +51,8 @@ load {
 }
 
 time {
-	format = '%Y-%m-%d %a %H:%M:%S'
+	#format = '%Y-%m-%d %a %H:%M:%S'
+	format = '%Y-%m-%d %a %H:%M'
 }
 
 volume master {
