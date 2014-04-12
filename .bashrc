@@ -59,3 +59,4 @@ alias vbox='sudo modprobe -a vboxnetadp vboxnetflt vboxpci'
 source ~/liquidprompt/liquidprompt
 
 fortune | ponysay
+alias tv='vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u'
