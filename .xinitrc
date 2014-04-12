@@ -21,6 +21,8 @@ synclient PalmDetect=1
 
 #feh --bg-scale /path/to/your/wallpaper
 
+clipit &
+
 #Start the udiskie service, before the window manager is loaded.
 udiskie --tray &
 
