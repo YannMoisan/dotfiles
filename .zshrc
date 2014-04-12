@@ -29,6 +29,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 CDPATH=.:~:/mnt/data/backup/dev/projects/
 
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=128M -XX:MaxPermSize=256M"
 export CLUSTERING=/data/client/clustering
 export SCRIPT=/mnt/data/backup/dev/script/
 export PATH=/opt/scala-2.10.1/bin:~/.gem/ruby/2.0.0/bin:/mnt/data/backup/dev/projects/dotfiles/scripts:/opt/sbt/bin:/opt/apache-maven-3.0.4/bin:$PATH
@@ -57,3 +58,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 fortune | ponysay
 
+alias tv="vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u"
