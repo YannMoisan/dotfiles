@@ -53,7 +53,8 @@ alias mongod="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
 alias cat='_cat'
 alias vbox='sudo modprobe -a vboxnetadp vboxnetflt vboxpci'
 
-source ~/liquidprompt/liquidprompt
+DOTFILES=/mnt/data/backup/dev/projects/dotfiles
+source $DOTFILES/liquidprompt/liquidprompt
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fortune | ponysay
