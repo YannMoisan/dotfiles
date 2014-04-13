@@ -55,7 +55,7 @@ alias vbox='sudo modprobe -a vboxnetadp vboxnetflt vboxpci'
 
 DOTFILES=/mnt/data/backup/dev/projects/dotfiles
 source $DOTFILES/liquidprompt/liquidprompt
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fortune | ponysay
 
