@@ -13,7 +13,12 @@ compinit
 # End of lines added by compinstall
 
 # enable color support of ls and also add handy aliases
-alias ls='ls --color=auto'
+if [[ $(uname -s) == "Darwin" ]]; then
+   alias ls='ls -G'
+else 
+   alias ls='ls --color=auto'
+fi
+#alias ls='ls --color=auto'
 eval $(dircolors -b ~/.dircolors)
 
 alias grep='grep --color=auto'
