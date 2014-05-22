@@ -17,3 +17,5 @@
     changes = diff --name-status
     dic = diff --cached
     diffstat = diff --stat
+[push]
+	default = simple
