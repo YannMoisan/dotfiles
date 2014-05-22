@@ -1,0 +1,13 @@
+mkdir rsynctest
+cd rsynctest
+mkdir {src,dst,bkp}
+echo a > src/a
+echo b > src/b
+rsync -a --delete -b --backup-dir=/home/yamo/rsynctest/bkp ~/rsynctest/src/ ~/rsynctest/dst
+ll -R
+rm src/b
+echo a >> src/a
+rsync -a --delete -b --backup-dir=/home/yamo/rsynctest/bkp ~/rsynctest/src/ ~/rsynctest/dst
+ll -R
+cat bkp/*
+cat dst/*
