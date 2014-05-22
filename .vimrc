@@ -22,7 +22,7 @@ set expandtab
 set autoindent
 set smartindent
 
-set textwidth=80
+set textwidth=120
 
 " Configure tabstyle...
 set tabstop=4
@@ -49,7 +49,7 @@ set wildmode=list:longest " Complete files like a shell.
 set wildignore=**/target/*
 set wildignore+=tags
 
-set clipboard=unnamedplus "Feed automatically the clipboard with the content of the unnamed register (works in both direction)
+set clipboard=unnamed,unnamedplus "Feed automatically the clipboard with the content of the unnamed register (works in both direction)
 
 "If you have :set autoread in Vim, use :checktime after pulling from hg/git to
 "load all the new changes into existing buffers.
@@ -354,3 +354,26 @@ map ,r :call RangerChooser()<CR>
 
 " Axa
 au! BufRead,BufNewFile *.mm,*.m set filetype=json
+autocmd FileType scala setlocal shiftwidth=2 tabstop=2
+map <leader>jt <Esc>:%!python -m json.tool<CR>
+
+let g:ctrlp_by_filename = 1
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+
+" Replace what's selected
+vnoremap <C-h> ""y:%s/<C-R>=escape(@", '/\')<cr>//g<Left><Left>
+
+" Pull word under cursor into LHS of a substitute (for quick search and replace)
+nmap <leader>zs :%s#<C-r>=expand("<cword>")<cr>#
+
+" Global quick search-replace
+nmap <leader>sr :!ack -l <C-r>=expand("<cword>")<cr> \|
+      \ xargs perl -pi -E 's/<C-r>=expand("<cword>")<cr>//g'<left><left><left>
+
+" Start a substitute
+nmap <leader>ss :%s/\v
+
+" Fast file renaming
+nmap R :let _pfn="<C-R>=expand("%:.")<cr>"<cr>q:iRename <C-R>=expand(_pfn)<cr><esc>^w
