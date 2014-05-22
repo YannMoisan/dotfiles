@@ -19,3 +19,5 @@
     diffstat = diff --stat
 [push]
 	default = simple
+[merge]
+	tool = vimdiff
