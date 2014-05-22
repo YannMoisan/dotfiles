@@ -8,6 +8,10 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/yamo/.zshrc'
 
+# COMPLETION SETTINGS
+# add custom completion scripts
+fpath=(~/.zsh/completion $fpath) 
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
