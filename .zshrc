@@ -18,7 +18,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 else 
    alias ls='ls --color=auto'
 fi
-#alias ls='ls --color=auto'
 eval $(dircolors -b ~/.dircolors)
 
 alias grep='grep --color=auto'
@@ -37,7 +36,20 @@ CDPATH=.:~:/mnt/data/backup/dev/projects/
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=128M -XX:MaxPermSize=256M"
 export CLUSTERING=/data/client/clustering
 export SCRIPT=/mnt/data/backup/dev/script/
-export PATH=/opt/scala-2.10.1/bin:~/.gem/ruby/2.0.0/bin:/mnt/data/backup/dev/projects/dotfiles/scripts:/opt/sbt/bin:/opt/apache-maven-3.0.4/bin:$PATH
+
+if [[ $(uname -s) == "Darwin" ]]; then
+    DOTFILES=~/Projects/dotfiles
+else 
+    DOTFILES=/mnt/data/backup/dev/projects/dotfiles
+fi
+
+export PATH=$DOTFILES/scripts:$PATH
+export PATH=/opt/scala-2.10.1/bin:$PATH
+export PATH=/opt/sbt/bin:$PATH
+export PATH=/opt/apache-maven-3.0.4/bin:$PATH
+export PATH=~/.gem/ruby/2.0.0/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+
 export EDITOR=vim
 
 function cl() {
@@ -57,8 +69,9 @@ alias idea="/opt/idea-IC-123.72/bin/idea.sh"
 alias mongod="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
 alias cat='_cat'
 alias vbox='sudo modprobe -a vboxnetadp vboxnetflt vboxpci'
+alias r='ranger'
+alias v='vim'
 
-DOTFILES=/mnt/data/backup/dev/projects/dotfiles
 source $DOTFILES/liquidprompt/liquidprompt
 source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $DOTFILES/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
