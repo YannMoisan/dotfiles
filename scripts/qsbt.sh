@@ -16,7 +16,7 @@
 # noremap <silent> <Leader>fn :cn<CR>
 
 quickfix=/tmp/sbt.quickfix;\
-sbt $@ | tee \
+sbt $@ -Dscala.repl.maxprintstring=10000 | tee \
   >(while read line;\
     do \
       if echo "$line" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" | grep '\[error\]\|\[warn\]' >> ${quickfix}.raw;\
