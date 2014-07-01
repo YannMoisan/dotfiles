@@ -152,20 +152,17 @@ map <F5> :!ctags -R
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
 
-" Parametres par defaut pour ack
+" Ack
 "let g:ackprg="ack -H --nocolor --nogroup --column"
 let g:ackprg="ag --nogroup --nocolor --column --ignore=tags"
-
-" Place un marqueur et cherche
 nmap <leader>j mA:Ack<space>
-" Place un marqueur et cherche le mot sous le curseur
 nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
 nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
 
-"let g:ctrlp_map=',c'
+" CtrlP
 let g:ctrlp_map = '<c-p>'
-
 let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_by_filename = 1
 
 let s:tlist_def_scala_settings = 'scala;t:trait;c:class;T:type;m:method;C:constant;l:local;p:package;o:object'
 
@@ -346,8 +343,6 @@ map ,r :call RangerChooser()<CR>
 au! BufRead,BufNewFile *.mm,*.m set filetype=json
 autocmd FileType scala setlocal shiftwidth=2 tabstop=2
 map <leader>jt <Esc>:%!python -m json.tool<CR>
-
-let g:ctrlp_by_filename = 1
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
