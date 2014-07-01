@@ -328,3 +328,5 @@ nmap <leader>ss :%s/\v
 
 " Fast file renaming
 nmap R :let _pfn="<C-R>=expand("%:.")<cr>"<cr>q:iRename <C-R>=expand(_pfn)<cr><esc>^w
+
+let tern#is_show_argument_hints_enabled=1
