@@ -307,6 +307,8 @@ map ,r :call RangerChooser()<CR>
 au! BufRead,BufNewFile *.mm,*.m set filetype=json
 autocmd FileType scala setlocal shiftwidth=2 tabstop=2
 map <leader>jt <Esc>:%!python -m json.tool<CR>
+let g:scala_sort_across_groups=1
+let g:scala_first_party_namespaces='com.axa'
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
