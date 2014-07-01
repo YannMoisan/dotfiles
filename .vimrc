@@ -111,16 +111,6 @@ nnoremap <leader>tw dd/@waiting<CR>p
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
-nnoremap <silent> [Q :cfirst<CR>
-nnoremap <silent> ]Q :clast<CR>
-
 " open a vertical split and switch over (v)
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap ŭ <C-w>v<C-w>l
