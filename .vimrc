@@ -168,24 +168,6 @@ let s:tlist_def_scala_settings = 'scala;t:trait;c:class;T:type;m:method;C:consta
 
 nmap <F8> :TagbarToggle<CR>
 
-"use conf in vim-scala/plugin.vim
-"let g:tagbar_type_scala = {
-"    \ 'ctagstype' : 'Scala',
-"    \ 'kinds'     : [
-"        \ 'p:packages:1',
-"        \ 'V:values',
-"        \ 'v:variables',
-"        \ 'T:types',
-"        \ 't:traits',
-"        \ 'o:objects',
-"        \ 'a:aclasses',
-"        \ 'c:classes',
-"        \ 'r:cclasses',
-"        \ 'm:methods'
-"    \ ]
-"    \ }
-"
-
 "Error format for SBT, and shortcut to open SBT quickfix file :
 "-----vim.rc-------
 set errorformat=%E\ %#[error]\ %#%f:%l:\ %m,%-Z\ %#[error]\ %p^,%-C\ %#[error]\ %m
