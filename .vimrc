@@ -164,8 +164,6 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_by_filename = 1
 
-let s:tlist_def_scala_settings = 'scala;t:trait;c:class;T:type;m:method;C:constant;l:local;p:package;o:object'
-
 nmap <F8> :TagbarToggle<CR>
 
 "Error format for SBT, and shortcut to open SBT quickfix file :
@@ -287,22 +285,6 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" Strip the newline from the end of a string
-function! Chomp(str)
-  return substitute(a:str, '\n$', '', '')
-endfunction
-
-" Find a file and pass it to cmd
-function! DmenuOpen(cmd)
-  let fname = Chomp(system("git ls-files | dmenu -i -l 20 -p " . a:cmd))
-  if empty(fname)
-    return
-  endif
-  execute a:cmd . " " . fname
-endfunction
-
-map <c-t> :call DmenuOpen("tabe")<cr>
-map <c-f> :call DmenuOpen("e")<cr>
 " Compatible with ranger 1.4.2 through 1.6.*
 "
 " Add ranger as a file chooser in vim
