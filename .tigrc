@@ -1,0 +1,2 @@
+ bind stash D !?git stash drop %(stash)
+ bind stash A !?git stash apply %(stash)
