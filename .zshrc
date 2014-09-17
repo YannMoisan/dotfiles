@@ -7,6 +7,20 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/yamo/.zshrc'
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                             /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+# Crée un cache des complétion possibles
+# très utile pour les complétion qui demandent beaucoup de temps
+# comme la recherche d'un paquet aptitude install moz<tab>
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh_cache
+# des couleurs pour la complétion
+# faites un kill -9 <tab><tab> pour voir :)
+zmodload zsh/complist
+setopt extendedglob
+zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 
 # COMPLETION SETTINGS
 # add custom completion scripts
@@ -53,6 +67,7 @@ export PATH=/opt/sbt/bin:$PATH
 export PATH=/opt/apache-maven-3.0.4/bin:$PATH
 export PATH=~/.gem/ruby/2.0.0/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=~/Projects/activator-1.2.3-minimal:$PATH
 
 export EDITOR=vim
 
@@ -74,6 +89,7 @@ alias mongod="/opt/mongodb-linux-x86_64-2.4.1/bin/mongod --dbpath /mnt/data/db"
 alias cat='_cat'
 alias vbox='sudo modprobe -a vboxnetadp vboxnetflt vboxpci'
 alias r='ranger'
+alias vim='DYLD_FORCE_FLAT_NAMESPACE=1 vim'
 alias v='vim'
 
 source $DOTFILES/liquidprompt/liquidprompt
@@ -98,3 +114,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 fortune | ponysay
 
 alias tv="vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u"
+
+#axa
+export STORES_PATH=/Users/yamo/Projects/
+export STORE_SYMLINK_NAME=store
+export PATH=~/Projects/df-belisarius/scripts/util:$PATH
