@@ -23,6 +23,7 @@ set autoindent
 set smartindent
 
 set textwidth=120
+set colorcolumn=+0
 
 " Configure tabstyle...
 set tabstop=4
@@ -46,7 +47,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set wildmenu " Enhanced command line completion.
 set wildmode=list:longest " Complete files like a shell.
-set wildignore=**/target/*
+set wildignore=*/target/*
 set wildignore+=tags
 
 set clipboard=unnamed,unnamedplus "Feed automatically the clipboard with the content of the unnamed register (works in both direction)
@@ -163,6 +164,7 @@ nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_by_filename = 1
+let g:ctrlp_max_files = 0 "no limit
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -207,7 +209,9 @@ au! BufRead,BufNewFile *.mm,*.m set filetype=json
 autocmd FileType scala setlocal shiftwidth=2 tabstop=2
 map <leader>jt <Esc>:%!python -m json.tool<CR>
 let g:scala_sort_across_groups=1
-let g:scala_first_party_namespaces='com.axa'
+let g:scala_first_party_namespaces='\(com.axa\|axa\)'
+set wildignore+=*/node_modules/*
+autocmd BufWritePost *.mm !refresh-store
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
