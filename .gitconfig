@@ -4,7 +4,7 @@
     name = Yann Moisan
     email = yamo93@gmail.com
 [alias]
-    st = status
+	st = status -sb
     ci = commit
     br = branch
     co = checkout
@@ -17,7 +17,16 @@
     changes = diff --name-status
     dic = diff --cached
     diffstat = diff --stat
+	latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
+	ds = diff --staged
 [push]
 	default = simple
 [merge]
 	tool = vimdiff
+	stat = true
+[url "https://"]
+	insteadOf = git://
+[mergetool]
+	keepBackup = false
+[core]
+	whitespace = trailing-space,space-before-tab
