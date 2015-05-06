@@ -65,6 +65,8 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
+set nrformats= "treat all numerals as decimal, even if padded with zeros
+
 " configure solarized color theme
 if has('gui_running')
     set background=light
@@ -102,6 +104,12 @@ inoremap KJ <C-O>"*p
 " Alternative: Space/BackSpace for Page Down/Up
 noremap <BS> <PageUp>
 noremap <Space> <PageDown>
+
+nnoremap <leader>a ggVG
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 " http://www.43folders.com/2004/09/15/how-does-a-nerd-hack-gtd
 nnoremap <leader>tn /TODOo    [ ] 
@@ -161,6 +169,7 @@ nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
 nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
 
 " CtrlP
+nnoremap <Leader>o :CtrlP<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_by_filename = 1
@@ -233,3 +242,15 @@ nmap <leader>ss :%s/\v
 nmap R :let _pfn="<C-R>=expand("%:.")<cr>"<cr>q:iRename <C-R>=expand(_pfn)<cr><esc>^w
 
 let tern#is_show_argument_hints_enabled=1
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Octave syntax
+augroup filetypedetect
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup END
+
+" airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set noshowmode
