@@ -214,12 +214,15 @@ endfun
 map ,r :call RangerChooser()<CR>
 
 " Axa
-au! BufRead,BufNewFile *.mm,*.m set filetype=json
+"au! BufRead,BufNewFile *.mm,*.m set filetype=json
 autocmd FileType scala setlocal shiftwidth=2 tabstop=2
 map <leader>jt <Esc>:%!python -m json.tool<CR>
 let g:scala_sort_across_groups=1
 let g:scala_first_party_namespaces='\(com.axa\|axa\)'
 set wildignore+=*/node_modules/*
+set wildignore+=*/tomcat_runner/*
+set wildignore+=*/jetty_runner/*
+set wildignore+=*/thirdparties/*
 autocmd BufWritePost *.mm !refresh-store
 
 " Open a Quickfix window for the last search.
