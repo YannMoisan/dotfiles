@@ -78,15 +78,21 @@ set nrformats=               "treat all numerals as decimal, even if padded with
 "}}}
 
 " Global mappings "{{{
-" Desactiver les touches directionnelles
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+" Disable arrow keys
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+noremap H ^
+noremap L $
+
+" remap U to <C-r> for easier redo
+nnoremap U <C-r>
 
 nnoremap <Tab> za
 
@@ -96,9 +102,9 @@ nnoremap / /\v
 
 nnoremap <Enter> g<c-]>
 
-" vaste.net
-map vp :exec "w !vpaste ft=".&ft<CR>
-vmap vp <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
+" vpaste.net
+noremap vp :exec "w !vpaste ft=".&ft<CR>
+vnoremap vp <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
 
 " Alternative: Space/BackSpace for Page Down/Up
 noremap <BS> <PageUp>
@@ -106,18 +112,22 @@ noremap <Space> <PageDown>
 
 nnoremap <leader>a ggVG
 
+"Open last/alternate buffer 
+noremap <Leader><Leader> <C-^>
+
+"clear highlighted searches
+nnoremap <silent> <leader>/ :nohlsearch<CR>
+
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
 
-" http://www.43folders.com/2004/09/15/how-does-a-nerd-hack-gtd
-nnoremap <leader>tn /TODOo    [ ] 
-nnoremap <leader>tx ^lrX
-nnoremap <leader>tw dd/@waiting<CR>p
+" qw with qwerty lafayette
+nnoremap <silent> æ :q<CR>
+nnoremap <silent> é :w<CR>
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 
 " open a vertical split and switch over (v)
 nnoremap <leader>v <C-w>v<C-w>l
@@ -137,28 +147,18 @@ noremap <silent> <Esc>i :tabnext<CR>
 noremap <silent> <Esc>U :exe "tabmove " .(tabpagenr()-2)<CR>
 noremap <silent> <Esc>I :exe "tabmove " . tabpagenr()<CR>
 
-noremap H ^
-noremap L $
-
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
-
-"Open last/alternate buffer 
-noremap <Leader><Leader> <C-^>
-
-"clear highlighted searches
-nmap <silent> ,/ :nohlsearch<CR>
-
-map <F5> :!ctags -R
+noremap <F5> :!ctags -R
 
 " Sudo to write
-cmap w!! w !sudo tee % >/dev/null
+cnoremap w!! w !sudo tee % >/dev/null
 
-nnoremap <leader>x gg/hlsearch<cr>dd
 " align end of line comments in my vimrc
 nnoremap <leader>ac 0f"80i <esc>30\|dt"
-"nnoremap ,ic :exe "norm! 0f\"80i\<Esc>030\<bar>dt\""
 
+" http://www.43folders.com/2004/09/15/how-does-a-nerd-hack-gtd
+nnoremap <leader>tn /TODOo    [ ] 
+nnoremap <leader>tx ^lrX
+nnoremap <leader>tw dd/@waiting<CR>p
 "}}}
 
 " Autocommand"{{{
