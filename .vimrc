@@ -75,6 +75,7 @@ set undolevels=1000          "maximum number of changes that can be undone
 set undoreload=10000         "maximum number lines to save for undo on a buffer reload
 
 set nrformats=               "treat all numerals as decimal, even if padded with zeros
+set formatoptions-=or
 "}}}
 
 " Global mappings "{{{
@@ -112,7 +113,7 @@ noremap <Space> <PageDown>
 
 nnoremap <leader>a ggVG
 
-"Open last/alternate buffer 
+"Open last/alternate buffer
 noremap <Leader><Leader> <C-^>
 
 "clear highlighted searches
@@ -121,6 +122,11 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
+
+" from steve losh : http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+nnoremap <leader>v V`]
+nnoremap <leader>ft Vatzf
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " qw with qwerty lafayette
 nnoremap <silent> æ :q<CR>
@@ -162,7 +168,7 @@ nnoremap <leader>tw dd/@waiting<CR>p
 "}}}
 
 " Autocommand"{{{
-augroup filetypedetect
+augroup customfiletypedetect
   au!
   au BufRead,BufNewFile *.m,*.oct set filetype=octave
   au BufNewFile,BufReadPost *.md set filetype=markdown
