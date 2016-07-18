@@ -30,3 +30,4 @@
 	keepBackup = false
 [core]
 	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore_global
