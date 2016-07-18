@@ -181,6 +181,7 @@ augroup customfiletypedetect
 
   au FileType scala setlocal shiftwidth=2 tabstop=2
   au BufEnter *.scala setl formatprg=java\ -jar\ /opt/scalariform/scalariform.jar\ --stdin\ --stdout
+  au FileType yaml setlocal shiftwidth=2 tabstop=2
   au BufWritePost *.mm !refresh-store
   au filetype qf map <buffer> <cr> <cr>
 augroup END
@@ -257,6 +258,22 @@ let g:NbCPPerYear = 22
 let g:NbRTPerYear = 9
 let g:NbRemainingCP = 21 " remaining CP end of 2013
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors=1
+
+let g:syntastic_sh_checkers = ["sh", "shellcheck", "checkbashisms"]
+let g:syntastic_markdown_checkers = ["mdl"]
+let g:syntastic_yaml_checkers = ["jsyaml"]
+" gem install mdl
+" brew install checkbashisms
+" npm install -g jsyaml
 "}}}
 
 " Scala"{{{
