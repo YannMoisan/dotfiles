@@ -1,7 +1,7 @@
 #!/bin/sh
 
 show_usage() {
-    echo "usage: $0 [clone|vim|zsh]" && exit 1
+    echo "usage: $0 [clone|git|linux|vim|x|zsh]" && exit 1
 }
 
 clone() {
@@ -9,12 +9,28 @@ clone() {
     git clone git@github.com:YannMoisan/dotfiles.git $SETUP_PROJECTS/dotfiles
 }
 
+setup_git() {
+    ln -s $SETUP_PROJECTS/dotfiles/.gitignore_global ~/.gitignore_global
+    ln -s $SETUP_PROJECTS/dotfiles/.gitconfig ~/.gitconfig
+    ln -s $SETUP_PROJECTS/dotfiles/.tigrc ~/.tigrc
+}
+
 setup_vim() {
     echo "setup vim"
     ln -s $SETUP_PROJECTS/dotfiles/.vimrc ~/.vimrc
     ln -s $SETUP_PROJECTS/dotfiles/.vim ~/.vim
-    cd ~/.vim
+    cd ~/.vim/bundle
     gws update
+}
+
+setup_x() {
+    curl -O http://qwerty-lafayette.org/releases/lafayette_linux_v0.5.xkb
+    ln -s $SETUP_PROJECTS/dotfiles/.xinitrc ~/.xinitrc
+    ln -s $SETUP_PROJECTS/dotfiles/.Xresources ~/.Xresources
+    ln -s $SETUP_PROJECTS/dotfiles/Xresources.dark ~/.Xresources.dark
+    mkdir ~/.config
+    ln -s $SETUP_PROJECTS/dotfiles/i3 ~/.config/i3
+    ln -s $SETUP_PROJECTS/dotfiles/i3status ~/.config/i3status
 }
 
 setup_zsh() {
@@ -28,12 +44,22 @@ setup_zsh() {
     ln -s ~/.zprezto/runcoms/zshrc ~/.zshrc
 }
 
+setup_linux() {
+    clone
+    setup_git
+    setup_x
+    setup_zsh
+}
+
 SETUP_PROJECTS=${PROJECTS:-$HOME/projects}
 echo "Projects dir:$SETUP_PROJECTS"
 
 case "$1" in
     clone) clone ;;
+    git)   setup_git ;;
+    linux) setup_linux;;
     vim)   setup_vim ;;
+    x)     setup_x ;;
     zsh)   setup_zsh ;;
     *)     show_usage ;;
 esac
