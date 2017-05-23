@@ -35,6 +35,7 @@ setup_x() {
 
 setup_zsh() {
     ln -s $SETUP_PROJECTS/zprezto ~/.zprezto
+    ln -s $SETUP_PROJECTS/dotfiles/bin ~/bin
 
     ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
     ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
