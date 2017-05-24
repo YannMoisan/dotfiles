@@ -12,18 +12,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # disable touchpad while typing
-syndaemon -t -k -i 2 -d &
+#syndaemon -t -k -i 2 -d &
 
 xset -b
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-synclient PalmDetect=1
+#synclient PalmDetect=1
 
 #feh --bg-scale /path/to/your/wallpaper
 
-clipit &
+#clipit &
 
 #Start the udiskie service, before the window manager is loaded.
 udiskie --tray &
+
+xkbcomp -w9 ~/lafayette_linux_v0.5.xkb $DISPLAY
 
 exec i3

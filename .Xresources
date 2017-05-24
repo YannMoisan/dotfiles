@@ -5,7 +5,7 @@
 ! https://github.com/solarized/xresources
 #include "Xresources.dark"
 
-URxvt.font: xft:inconsolata:size=11
+URxvt.font: xft:DejaVu Sans Mono for Powerline:size=11
 
 ! Fix font space
 ! URxvt*letterSpace: -1
@@ -20,8 +20,8 @@ URxvt.scrollBar: false
 URxvt*urgentOnBell: true
 
 ! Deactivate KEYCAP PICTURE INSERT MODE when C-S are pressed
-URxvt*iso14755 : false
-URxvt*iso14755_52 : false
+!URxvt*iso14755 : false
+!URxvt*iso14755_52 : false
 URxvt.perl-ext-common:  default,matcher,font-size
 
 ! extensions -> matcher

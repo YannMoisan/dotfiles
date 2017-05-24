@@ -1,63 +1,88 @@
-general {}
+#|
+#| File    : ~/.config/i3status/config
+#| Charset : UTF-8
+#| Author  : Fabien Cazenave
+#| Source  : https://github.com/fabi1cazenave/dotFiles
+#| License : WTFPL
+#|
+#| Test this with `i3-msg restart`.
+#|
 
-# order += 'run_watch DHCP'
-# order += 'run_watch VPN'
-# order += 'ethernet eth0'
-order += 'wireless wlo1'
-order += 'volume master'
-order += 'battery 0'
-#order += 'disk /'
-order += 'cpu_temperature 0'
-order += 'load'
-order += 'time'
+general {
+  output_format = "i3bar"
+  colors = true
+  interval = 60
+}
 
-battery 0 {
-	format = '♥: %status - %percentage - %remaining'
-    integer_battery_capacity = true
-    low_threshold = 30
-    threshold_type = percentage
+order += "disk /"
+order += "disk /home"
+# order  = "ipv6"
+# order += "run_watch DHCP"
+# order += "run_watch VPN"
+# order += "wireless wlan0"
+# order += "ethernet eth0"
+order += "battery 0"
+order += "cpu_temperature 0"
+# order += "load"
+order += "volume master"
+order += "time"
+
+wireless wlan0 {
+  format_up = "W: (%quality at %essid) %ip"
+  format_down = "W: down"
 }
 
 ethernet eth0 {
-	format_up   = 'E: %ip | %speed'
+  # if you use %speed, i3status requires root privileges
+  #format_up = "E: %ip (%speed)"
+  format_up = "E: %ip"
+  format_down = "E: down"
 }
 
-wireless wlo1 {
-	#format_up   = 'W: %ip | %quality - %essid'
-	format_up   = 'W: %essid (%quality)'
+battery 0 {
+  integer_battery_capacity = true
+  hide_seconds = true
+  format = "%status %percentage %remaining"
 }
 
 run_watch DHCP {
-	#pidfile = '/var/run/dhclient*.pid'
-	pidfile = '/var/run/sendsigs.omit.d/network-manager.dhclient-eth2.pid'
+  pidfile = "/var/run/dhclient*.pid"
 }
 
 run_watch VPN {
-	#pidfile = '/var/run/vpnc/pid'
-	pidfile = '/var/run/openvpn.vpndc.pid'
-	format  = '%title(%status)'
-}
-
-cpu_temperature 0 {
-	format = 'T: %degrees °C'
-}
-
-disk '/' {
-	format = '~: %free'
-}
-
-load {
-	format = 'L: %1min'
+  pidfile = "/var/run/vpnc/pid"
 }
 
 time {
-	#format = '%Y-%m-%d %a %H:%M:%S'
-	format = '%Y-%m-%d %a %H:%M'
+  #format = "%Y-%m-%d %H:%M:%S"
+  format = "%Y-%m-%d %H:%M"
+}
+
+load {
+  format = "%1min"
+}
+
+cpu_temperature 0 {
+  format = "T: %degrees °C"
+}
+
+disk "/" {
+  # '%free' counts blocks that are reserved to root;
+  # you probably want to use '%avail' instead.
+  # format = "/ %free"
+  format = "/ %avail"
+}
+
+disk /home {
+  # I have a separate /home partition…
+  format = "/home %avail"
 }
 
 volume master {
-	format = "♪: %volume"
-	device = "default"
-	mixer = "Master"
-	mixer_idx = 0
+  format = "♪: %volume"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
 }
+
+# vim: set ft=config:
