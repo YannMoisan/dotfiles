@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount Share at boot
+Requires=NetworkManager.service
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What=//mafreebox.freebox.fr/Disque dur
+Where=/mnt/freebox
+Options=guest,uid=1000,gid=1000
+Type=cifs
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target
