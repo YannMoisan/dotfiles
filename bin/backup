@@ -1,22 +1,11 @@
 #! /bin/sh -
 # Script pour automatiser le backup de l'ordi perso
 
-shared_dir=/mnt/data/backup
+#shared_dir=/mnt/data/backup
+shared_dir=~/backup/
 
-regular="
-/etc/fstab 
-/etc/apt/sources.list 
-/boot/grub/grub.cfg 
-$shared_dir/Drine
-$shared_dir/application
-$shared_dir/dev
-$shared_dir/download
-$shared_dir/photos
-$HOME/.purple/accounts.xml
-$HOME/.mozilla
-$HOME/.thunderbird"
-
-destdir="/mnt/usb/Backups"
+#destdir="/mnt/usb/Backups"
+destdir=/run/media/yamo/f317f219-8702-4f55-9f02-5759cfb4114c/Backups
 
 # --------------------------------------------------------------------------------
 # Methods declaration
@@ -27,11 +16,10 @@ log() {
 }
 
 copy_elements () {
-    for element in $1
-    do
-        log copy_elements "file:$element"
-        rsync -av --exclude=target/ --exclude=".git/" --delete --link-dest=$destdir/backup.1 $element $destdir/backup.0
-    done
+    rsync -a --human-readable --itemize-changes --stats \
+        --exclude=target/ --exclude=".git/" \
+        --delete --delete-excluded \
+        --link-dest=$destdir/current $shared_dir $destdir/$date
 }
 # --------------------------------------------------------------------------------
 # Main
@@ -42,13 +30,11 @@ log main "Destination directory: $destdir"
 
 start_time=`date +%s`
 
-rm -rf $destdir/backup.3
-mv $destdir/backup.2 $destdir/backup.3
-mv $destdir/backup.1 $destdir/backup.2
-mv $destdir/backup.0 $destdir/backup.1
-mkdir $destdir/backup.0
+date=`date "+%Y-%m-%dT%H:%M:%S"`
+copy_elements
+rm -f $destdir/current
+ln -s $date $destdir/current
 
-copy_elements "$regular"
 end_time=`date +%s`
 duration=`expr $end_time - $start_time`
 echo $duration
