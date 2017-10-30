@@ -1,2 +1,39 @@
- bind stash D !?git stash drop %(stash)
- bind stash A !?git stash apply %(stash)
+# http://jonas.nitro.dk/tig/tigrc.5.html
+# https://github.com/jonas/tig/wiki/Bindings
+
+# Stage a single line
+bind stage 1 stage-update-line
+
+# Tag the selected commit
+bind main T !git tag -s -a "%(prompt New tag name: )" %(commit)
+
+# Rebase in interactive mode (from the select commit)
+bind main I !git rebase -i %(commit)~"%(prompt Number of commits to rebase in interactive mode: )"
+bind main M !git rebase -i master
+
+# Amend the last commit
+bind main + !git commit --amend
+bind status + !git commit --amend
+
+# Stash all
+bind status S @git stash save --include-untracked "%(prompt New stash name: )"
+
+# Create a new branch from the selected one
+bind refs N @git checkout -b "%(prompt New branch name: )" %(branch)
+
+# Update (Pull) remotes changes from origin
+bind main U !git pull --rebase --autostash %(remote) %(branch)
+bind status U !git pull --rebase --autostash %(remote) %(branch)
+
+# Push local changes to origin
+bind status P !git push origin
+bind status F !git push origin -f
+
+# Push and track new branch
+bind refs P !git push --set-upstream origin %(branch)
+
+# Open a pull request
+bind refs R !hub pull-request
+
+# Open the commit on Github
+bind generic B @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
