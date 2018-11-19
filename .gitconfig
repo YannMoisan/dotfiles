@@ -19,6 +19,8 @@
     diffstat = diff --stat
 	latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
 	ds = diff --staged
+	rebase-master = !git pull --rebase origin master
+	delete-merged = !git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d
 [push]
 	default = simple
 [merge]
@@ -31,3 +33,5 @@
 [core]
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore_global
+[fetch]
+	prune = true
