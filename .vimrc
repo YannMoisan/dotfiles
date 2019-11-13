@@ -14,7 +14,10 @@ filetype plugin indent on    " enable detection, plugins and indenting in one st
 " Search
 " change the mapleader from \ to ,
 let mapleader=","
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
 colorscheme solarized
+
 
 set clipboard=unnamed,unnamedplus    "Feed automatically the clipboard with the content of the unnamed register (works in both direction)
 
