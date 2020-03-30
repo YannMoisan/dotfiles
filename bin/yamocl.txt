@@ -51,6 +51,7 @@ grub-install -v
 arp-scan -I enp4s0 -l
 curl -XPOST localhost:9200/index-attach -d mapping.json 
 curl -XPOST localhost:9200/index-attach -d mapping.json 
+dig +short yannmoisan.com
 dig yannmoisan.com
 dig test.local @127.0.0.1 (works with dnsmasq, a local DNS server)
 hciconfig hci0 down;rmmod hci_usb
@@ -67,6 +68,8 @@ netstat -tl (live connection)
 nslookup google.com #Teste le serveur dns
 route add default gw 192.168.10.1
 ssh -L 9000:localhost:80 penguen
+ssh -i ~/.ssh/emr-buying-engine.pem hadoop@ip-10-0-182-142.eu-west-1.compute.internal
+ssh -l hadoop 10.20.103.172
 ssh -l user server = ssh user@server
 ssh-add ~/.ssh/id_rsa
 ssh-copy-id
@@ -93,11 +96,12 @@ lsusb #Liste les périphériques USB
 lsusb -vv | grep bcdUSB : to check if it's usb 1 or 2 or 3
 
 b. Git
-git add . (add untrack and modify, no rm)
-git add -u (only tracked, but rm)
 git add -A = git add . & git add -u
+git add -u (only tracked, but rm)
+git add . (add untrack and modify, no rm)
 git branch -dr
 git clean
+git clean -d -n
 git config --global user.email "yamo93@gmail.com"
 git config --global user.name "Yann Moisan"
 git config -l
@@ -106,6 +110,11 @@ git push -u origin master
 git rebase --interactive HEAD~2 #pour fusionner 2 commit
 git remote add origin git@github.com:YannMoisan/math.git
 git remote set-url origin git@github.com:YannMoisan/dotfiles.git
+git reset --hard HEAD~1
+git reset --soft HEAD~1
+git reset HEAD~1
+git revert -m 1 008734ff4d905d3b06497fd07dcda8a00b3a83e3
+git rm --cached FloodFill2.scala
 
 c. ex command
 :s/&amp;/\&gt;/g
@@ -162,6 +171,16 @@ $SHELL
 $HOME
 $PATH
 
+g. java
+java -XX:+PrintFlagsFinal -version
+java -jar jol-cli-0.9-full.jar internals -cp /usr/local/Cellar/scala/2.13.1/libexec/lib/scala-library.jar "scala.Tuple2$mcII$sp"
+jcmd 76804 GC.class_histogram
+jinfo 49063
+jstack 20660
+jstat -gcutil 76804
+scala Inc -J-XX:+UnlockDiagnosticVMOptions -J-XX:+TraceClassLoading -J-XX:+LogCompilation -J-XX:+PrintAssembly\n
+
+
 which eclipse
 whereis eclipse
 locate eclipse
@@ -176,32 +195,48 @@ ab -n 100 -c 10 http://www.yahoo.com/
 airport
 alias
 arp -a
+aws --region us-east-1 ec2 describe-instances --filters 'Name=tag:capistrano::type,Values=cassandra-dmp-use1'
+aws emr list-clusters --region eu-west-1 --active | jq '.Clusters[].Name'
+aws s3 sync
+bq --project_id teads-1307 load --source_format=PARQUET --schema_update_option=ALLOW_FIELD_ADDITION --time_partitioning_field=d innov_be.test_yann "gs://teads-be/test/four/*.parquet"
+bq query --project teads-1307 "select count(*) from innov_be.test_yann"
 cat tmp.sh >> blog.sh #concatene 2 fichiers
 cd - # Se positionne dans le précédent répertoire de travail
 chmod
 chown
 command $(!!) #for output of last command, need to reexcute it
+command -v tig
 convmv -f cp1252 -t utf-8 -r .
+coursier resolve -t com.github.alexarchambault:case-app_2.12:2.0.0-M5
+coursier resolve org.apache.spark:spark-sql_2.12:2.4.0 --what-depends-on org.htrace:htrace-core
+coursier resolve tv.teads.buyingengine.jobs:dummy_2.12:0.1.35-yann-scala-212-SNAPSHOT -r $REPOS
 cp filename{,.bak} # shell extension
 cut
 diff
+ebook-convert scala-with-cats.epub scala-with-cats.mobi
 echo "!n" > file # sav a command in the history in a file
 env
 fc // edit last command in ivm
 fc-list
 fg
 fg / ctrl z
+git rebase -i --exec "sbt jobs-definitions/test" master
 grep -lir /usr/share/tomcat7 ~/workspace2/.metadata/
+gsutil ls -r "gs://teads-be/tmp/bigquery/auction-feature-v3-pre-bigquery/2020/3/29/20"
 jstack / jstat / jmap
 ln -s /opt/apache-maven-3.0.3/bin/mvn /usr/bin/mvn
 mvn archetype:generate -DarchetypeGroupId=fr.gouv.impots.appli.commun.manzana.maven.archetypes -DarchetypeArtifactId=archetype-META -DarchetypeVersion=3.0 -DarchetypeRepository=http://repo.appli.dgfip/nexus/content/repositories/public
 mysql -u root wine < src/main/resources/cellar.sql
 mysqldump -u root -p bk_trunk
+parquet-tools meta auction_feature_v3-0-0d925473-e5df-4dea-af07-ef8165ed0554-1583906400093
 pstree
+rclone
+rclone --config rclone.conf sync source:teads-hadoop-apne1/engine/auction-feature-v3/2019/10/17/0/auction_feature_v3-0-240286b7-0c98-4272-8918-0af696c6397f-1571270400360 dest:teads-hadoop/engine/auction-feature-v3-test/2019/10/17/0
 readlink -e /usr/bin/java
 rename
 rename -n 's/(\d{4})_?(\d{2})_?(\d{2})/\1-\2-\3/' taxes/*
 setxkbmap -layout fr -variant oss
+shellcheck
 systemctl start mysqld.service
 timedatectl set-time '2013-02-12 14:45:00'
 timedatectl status
