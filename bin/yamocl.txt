@@ -5,7 +5,9 @@ usermod -a -G vboxusers yamo
 4. Disque
 dosfsck -t -a -v /dev/sdb1
 du -a /home/yamo/backup/ | sort -n -r | head -n 10
+fdisk -l (diskutil list sur mac)
 fdisk -l lister les partitions
+lsblk
 mount -t vboxsf share shared
 
 6. backup
@@ -14,11 +16,15 @@ sudo dd if=~/mbr.img of=/dev/sda bs=446 count=1 #Pour restaurer le MBR sans rest
 sudo dd if=~/mbr.img of=/dev/sda bs=512 count=1 #Pour restaurer le MBR et la table de partition (par exemple en cas d'erreur lors du partitionnement du disque), saisissez dans un terminal:
 sudo dd if=~/mbr.img of=/dev/sda bs=1 skip=446 seek=446 count=66 #Pour ne restaurer que la table de partition (par exemple en cas d'erreur lors du partitionnement du disque et si l'on désire garder le bootloader que l'on a pu modifier), saisissez dans un terminal:
 rsync -a --no-o --no-g --delete --progress /mnt/data/backup/photos/2012 /mnt/freebox/Photos/
+rsync -av # backup
 
 7. processus
+ps -ef
 su - : change rep courant, recharge variable d'env, .bash_profile
 su -c 'command' = sudo command
 su - = sudo -i
+ulimit
+ulimit -s
 
 8. Installation
 dpkg --get-selections|grep
@@ -35,6 +41,7 @@ sudo update-alternatives --install /usr/bin/javac javac /opt/jdk1.7.0_04/bin/jav
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 pacman -S ttf-inconsolata
+pacman -Sc enleve du acche les paquets non installes
 
 9. arrêt et démarrage
 
@@ -44,40 +51,60 @@ grub-install -v
 arp-scan -I enp4s0 -l
 curl -XPOST localhost:9200/index-attach -d mapping.json 
 curl -XPOST localhost:9200/index-attach -d mapping.json 
-dig google.com
+dig yannmoisan.com
+dig test.local @127.0.0.1 (works with dnsmasq, a local DNS server)
 hciconfig hci0 down;rmmod hci_usb
+host yannmoisan.com // DNS lookup
 ifconfig eth0 192.168.10.125 netmask 255.255.255.0
 ifconfig wlan0 down
+lsof -i TCP : list open files (open tcp connection with pid)
+nc -l localhost 8080
+nc localhost 8080
 netcfg -u ethernet-dhcp
+netstat (list network connections : tcp, udp, unix socket)
+netstat -nr # Display the rooting table
+netstat -tl (live connection)
 nslookup google.com #Teste le serveur dns
 route add default gw 192.168.10.1
+ssh -L 9000:localhost:80 penguen
 ssh -l user server = ssh user@server
+ssh-add ~/.ssh/id_rsa
+ssh-copy-id
 ssh-keygen -t rsa -C "yamo93@gmail.com"
+sudo launchctl list
+sudo launchctl remove homebrew.mxcl.dnsmasq
 telnet talk.google.com 5222
+traceroute google.com
 
 15. Noyau
 cat /etc/modules
 modinfo <modulename>
 rmmod <modulename>
 lsmod
-ulimit -s
 
 a. Materiel
-lsusb #Liste les périphériques USB
+ls /media #Liste les périphériques amovibles montés
+lshw -C network
 lspci #Liste les périphériques PCI
 lspci -v
 lspci|grep VGA
-ls /media #Liste les périphériques amovibles montés
-lshw -C network
+lsub -v
+lsusb #Liste les périphériques USB
+lsusb -vv | grep bcdUSB : to check if it's usb 1 or 2 or 3
 
 b. Git
-git config --global user.name "Yann Moisan"
+git add . (add untrack and modify, no rm)
+git add -u (only tracked, but rm)
+git add -A = git add . & git add -u
+git branch -dr
+git clean
 git config --global user.email "yamo93@gmail.com"
-git remote add origin git@github.com:YannMoisan/math.git
-git push -u origin master
-git log --oneline --graph
-git rebase --interactive HEAD~2 #pour fusionner 2 commit
+git config --global user.name "Yann Moisan"
 git config -l
+git log --oneline --graph
+git push -u origin master
+git rebase --interactive HEAD~2 #pour fusionner 2 commit
+git remote add origin git@github.com:YannMoisan/math.git
 git remote set-url origin git@github.com:YannMoisan/dotfiles.git
 
 c. ex command
@@ -114,10 +141,26 @@ find . -type f -printf %s
 
 exiftool "-Directory<DateTimeOriginal" -d "%Y-%m-%d" .
 
+d. important files
+/boot # code pour booter la machine
+/etc/group
 /etc/hostname
 /etc/hosts
-/etc/resolv.conf
 /etc/network/interfaces
+/etc/passwd
+/etc/resolv.conf
+/etc/resolver.conf # config DNS, généré par le réseau (ADSL, VPN)
+
+e. osx
+brew doctor
+brew install macvim
+
+f. important var
+$EDITOR
+$TERM
+$SHELL
+$HOME
+$PATH
 
 which eclipse
 whereis eclipse
@@ -129,23 +172,45 @@ locate eclipse
 
 . .profile
 . ~/.bashrc
+ab -n 100 -c 10 http://www.yahoo.com/
+airport
+alias
+arp -a
 cat tmp.sh >> blog.sh #concatene 2 fichiers
 cd - # Se positionne dans le précédent répertoire de travail
+chmod
+chown
 command $(!!) #for output of last command, need to reexcute it
 convmv -f cp1252 -t utf-8 -r .
 cp filename{,.bak} # shell extension
+cut
+diff
 echo "!n" > file # sav a command in the history in a file
+env
+fc // edit last command in ivm
 fc-list
+fg
+fg / ctrl z
 grep -lir /usr/share/tomcat7 ~/workspace2/.metadata/
+jstack / jstat / jmap
 ln -s /opt/apache-maven-3.0.3/bin/mvn /usr/bin/mvn
 mvn archetype:generate -DarchetypeGroupId=fr.gouv.impots.appli.commun.manzana.maven.archetypes -DarchetypeArtifactId=archetype-META -DarchetypeVersion=3.0 -DarchetypeRepository=http://repo.appli.dgfip/nexus/content/repositories/public
 mysql -u root wine < src/main/resources/cellar.sql
 mysqldump -u root -p bk_trunk
+pstree
 readlink -e /usr/bin/java
+rename
+rename -n 's/(\d{4})_?(\d{2})_?(\d{2})/\1-\2-\3/' taxes/*
 setxkbmap -layout fr -variant oss
 systemctl start mysqld.service
 timedatectl set-time '2013-02-12 14:45:00'
 timedatectl status
+tmux
 tmux attach -t 0
 tput colors
+tree
+unalias/alias
+unset/set
+which / whereis / type
+whois
 xrdb -query -all
