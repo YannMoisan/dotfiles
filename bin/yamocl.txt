@@ -147,6 +147,7 @@ find /mnt/data/backup/photos/ -name .xvpics -type d -exec find '{}' -type f \; |
 find /mnt/data/backup/photos/ -type f -name *.* | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
 find /mnt/data/backup/photos/ -type f -name *.* | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
 find . -type f -printf %s
+find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd" \;
 
 exiftool "-Directory<DateTimeOriginal" -d "%Y-%m-%d" .
 
@@ -249,3 +250,5 @@ unset/set
 which / whereis / type
 whois
 xrdb -query -all
+find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c cd
+
