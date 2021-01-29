@@ -11,7 +11,6 @@ tern_for_vim | https://github.com/marijnh/tern_for_vim.git
 vim-airline | https://github.com/bling/vim-airline
 vim-colors-solarized | https://github.com/altercation/vim-colors-solarized
 vim-commentary | https://github.com/tpope/vim-commentary
-vim-css-color | https://github.com/skammer/vim-css-color.git
 vim-css3-syntax | https://github.com/hail2u/vim-css3-syntax.git
 vim-go | https://github.com/fatih/vim-go.git
 vim-javascript | https://github.com/pangloss/vim-javascript.git
