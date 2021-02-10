@@ -34,7 +34,7 @@ setup_x() {
 }
 
 setup_zsh() {
-    ln -s $SETUP_PROJECTS/zprezto ~/.zprezto
+    ln -s $SETUP_PROJECTS/prezto ~/.zprezto
     ln -s $SETUP_PROJECTS/dotfiles/bin ~/bin
 
     ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
@@ -52,7 +52,7 @@ setup_linux() {
     setup_zsh
 }
 
-SETUP_PROJECTS=${PROJECTS:-$HOME/projects}
+SETUP_PROJECTS=${PROJECTS:-$HOME/projects/perso}
 echo "Projects dir:$SETUP_PROJECTS"
 
 case "$1" in
