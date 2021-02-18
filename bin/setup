@@ -5,37 +5,37 @@ show_usage() {
 }
 
 clone() {
-    git clone --recursive git@github.com:YannMoisan/prezto.git $SETUP_PROJECTS/zprezto
-    git clone git@github.com:YannMoisan/dotfiles.git $SETUP_PROJECTS/dotfiles
+    git clone --recursive git@github.com:YannMoisan/prezto.git "$SETUP_PROJECTS/prezto"
+    git clone git@github.com:YannMoisan/dotfiles.git "$SETUP_PROJECTS/dotfiles"
 }
 
 setup_git() {
-    ln -s $SETUP_PROJECTS/dotfiles/.gitignore_global ~/.gitignore_global
-    ln -s $SETUP_PROJECTS/dotfiles/.gitconfig ~/.gitconfig
-    ln -s $SETUP_PROJECTS/dotfiles/.tigrc ~/.tigrc
+    ln -s "$SETUP_PROJECTS/dotfiles/.gitignore_global" ~/.gitignore_global
+    ln -s "$SETUP_PROJECTS/dotfiles/.gitconfig" ~/.gitconfig
+    ln -s "$SETUP_PROJECTS/dotfiles/.tigrc" ~/.tigrc
 }
 
 setup_vim() {
     echo "setup vim"
-    ln -s $SETUP_PROJECTS/dotfiles/.vimrc ~/.vimrc
-    ln -s $SETUP_PROJECTS/dotfiles/.vim ~/.vim
-    cd ~/.vim/bundle
+    ln -s "$SETUP_PROJECTS/dotfiles/.vimrc" ~/.vimrc
+    ln -s "$SETUP_PROJECTS/dotfiles/.vim" ~/.vim
+    cd ~/.vim/bundle || exit
     gws update
 }
 
 setup_x() {
-    curl -O http://qwerty-lafayette.org/releases/lafayette_linux_v0.5.xkb
-    ln -s $SETUP_PROJECTS/dotfiles/.xinitrc ~/.xinitrc
-    ln -s $SETUP_PROJECTS/dotfiles/.Xresources ~/.Xresources
-    ln -s $SETUP_PROJECTS/dotfiles/Xresources.dark ~/.Xresources.dark
+    curl -o http://qwerty-lafayette.org/releases/lafayette_linux_v0.5.xkb
+    ln -s "$SETUP_PROJECTS/dotfiles/.xinitrc" ~/.xinitrc
+    ln -s "$SETUP_PROJECTS/dotfiles/.xresources" ~/.xresources
+    ln -s "$SETUP_PROJECTS/dotfiles/xresources.dark" ~/.xresources.dark
     mkdir ~/.config
-    ln -s $SETUP_PROJECTS/dotfiles/i3 ~/.config/i3
-    ln -s $SETUP_PROJECTS/dotfiles/i3status ~/.config/i3status
+    ln -s "$SETUP_PROJECTS/dotfiles/i3" ~/.config/i3
+    ln -s "$SETUP_PROJECTS/dotfiles/i3status" ~/.config/i3status
 }
 
 setup_zsh() {
-    ln -s $SETUP_PROJECTS/prezto ~/.zprezto
-    ln -s $SETUP_PROJECTS/dotfiles/bin ~/bin
+    ln -s "$SETUP_PROJECTS/prezto" ~/.zprezto
+    ln -s "$SETUP_PROJECTS/dotfiles/bin" ~/bin
 
     ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
     ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
