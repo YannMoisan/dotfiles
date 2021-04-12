@@ -33,7 +33,7 @@ bind status F !git push origin -f
 bind refs P !git push --set-upstream origin %(branch)
 
 # Open a pull request
-bind refs R !hub pull-request
+bind refs R !gh pr create
 
 # Open the commit on Github
 bind generic B @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
