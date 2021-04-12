@@ -2,7 +2,7 @@
     ui = true
 [user]
     name = Yann Moisan
-    email = yamo93@gmail.com
+	email = yann@zen.ly
 [alias]
 	st = status -sb
     ci = commit
