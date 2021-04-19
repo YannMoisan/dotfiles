@@ -76,6 +76,24 @@ curl https://raw.githubusercontent.com/YannMoisan/dotfiles/master/scripts/setup 
 
 Open a new tab in your terminal and p10k configuration will be launched automatically and will install Meslo fonts
 
+## Installation order
+
+![installation order](installation-order.png)
+
+generated from the CLI with `dot -Tpng installation-order.dot -o installation-order.png`
+
+## Update the system
+
+- prezto
+	- git fetch upstream
+	- git merge upstream/master
+	- git submodule update --init --recursive
+- brew
+	- brew update
+	- brew upgrade
+- vim plugins
+	- gws ff
+	
 ## CLI tools
 
 - [bat](https://github.com/sharkdp/bat): Clone of cat(1) with syntax highlighting and Git integration

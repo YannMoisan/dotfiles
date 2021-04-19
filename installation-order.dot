@@ -1,0 +1,10 @@
+digraph {
+    qwerty_lafayette -> brew;
+    brew -> dropbox;
+    dropbox -> keepass;
+    brew -> keepass;
+    keepass -> github;
+    github -> dotfiles;
+    brew -> iterm2;
+    brew -> firefox;
+}
