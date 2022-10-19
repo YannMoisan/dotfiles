@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "# Check env variables"
 echo "LANG=$LANG"
 echo "TERM=$TERM"
