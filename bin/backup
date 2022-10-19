@@ -5,7 +5,7 @@
 shared_dir=~/backup/
 
 #destdir="/mnt/usb/Backups"
-destdir=/run/media/yamo/f317f219-8702-4f55-9f02-5759cfb4114c/Backups
+destdir=/media/yamo/f317f219-8702-4f55-9f02-5759cfb4114c/Backups
 
 # --------------------------------------------------------------------------------
 # Methods declaration
