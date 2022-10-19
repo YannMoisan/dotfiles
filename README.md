@@ -8,6 +8,15 @@
 
 - shell : [zsh](https://wiki.archlinux.org/index.php/zsh) with [prezto](https://github.com/sorin-ionescu/prezto) and [powelevel10k](https://github.com/romkatv/powerlevel10k) prompt
 
+### why zsh over bash
+
+- Automatic cd: `/usr` has the same effect as `cd /usr`
+- Spelling correction: `cd /uzr<Tab>` is fixed to `cd /usr`
+- Path expansion `cd /u/lo/b<Tab>` expands to `cd /usr/local/bin`
+- Smarter completion for commands like `git`, `ssh`
+- Recursive globbing `vim **/*.md` opens all markdown files in the current dir and descendants
+- Fish-like features: [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
+
 ## How to install
 ### Linux
 ```
