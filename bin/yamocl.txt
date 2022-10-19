@@ -1,4 +1,6 @@
 2. user
+cat /etc/passwd # list all users
+cat /etc/group  # list all groups
 usermod -G nogroup damien Attention, sans l'option -a, enleve les droit root
 usermod -a -G vboxusers yamo
 
