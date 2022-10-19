@@ -17,6 +17,14 @@
 - Recursive globbing `vim **/*.md` opens all markdown files in the current dir and descendants
 - Fish-like features: [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
 
+### prezto modules
+
+- archive: add handy functions `archive`, `unarchive`
+- directory: add `d` and `1..9` to navigate through pushed directories. Also configures `AUTO_CD`, `CDABLE_VARS`
+- editor: add `bindkey-all` to display bind keys
+- fasd: quick navigation through frecent files and directories. add `j` and `,<Tab>`
+- history: add `history-stat`
+
 ## How to install
 ### Linux
 ```
