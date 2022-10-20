@@ -135,6 +135,7 @@ generated from the CLI with `dot -Tpng installation-order.dot -o installation-o
 - [tig](https://jonas.github.io/tig/): Text interface for Git repositories
 - [tldr](https://tldr.sh/): Simplified and community-driven man pages
 - vim (install the brew version on Mac)
+- [vivid](https://github.com/sharkdp/vivid): a generator for the `LS_COLORS` environment variable
 - [youtube-dl](https://youtube-dl.org/): Download YouTube videos from the command-line
 
 ### Dev
