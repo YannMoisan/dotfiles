@@ -221,6 +221,7 @@ echo "!n" > file # sav a command in the history in a file
 env
 fc // edit last command in ivm
 fc-list
+fd -t f "^[^.]+$" ~/Dropbox # find files without extension
 fg
 fg / ctrl z
 git rebase -i --exec "sbt jobs-definitions/test" master
