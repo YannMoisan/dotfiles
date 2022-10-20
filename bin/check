@@ -13,3 +13,14 @@ echo -e "\x1B[31mHello World\e[0m"
 echo -e "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u269"
 echo "# Check font"
 fc-list|grep "DejaVu Sans Mono for Powerline"
+command -v bat >/dev/null 2>&1 || { echo >&2 "I require bat but it's not installed.  Aborting."; }
+command -v diff-so-fancy >/dev/null 2>&1 || { echo >&2 "I require diff-so-fancy but it's not installed.  Aborting."; }
+command -v fd >/dev/null 2>&1 || { echo >&2 "I require fd but it's not installed.  Aborting."; }
+command -v fzf >/dev/null 2>&1 || { echo >&2 "I require fzf but it's not installed.  Aborting."; }
+command -v glances >/dev/null 2>&1 || { echo >&2 "I require glances but it's not installed.  Aborting."; }
+command -v ncdu >/dev/null 2>&1 || { echo >&2 "I require ncdu but it's not installed.  Aborting."; }
+command -v ranger >/dev/null 2>&1 || { echo >&2 "I require ranger but it's not installed.  Aborting."; }
+command -v ripgrep >/dev/null 2>&1 || { echo >&2 "I require ripgrep but it's not installed.  Aborting."; }
+command -v tig >/dev/null 2>&1 || { echo >&2 "I require tig but it's not installed.  Aborting."; }
+command -v tldr >/dev/null 2>&1 || { echo >&2 "I require tldr but it's not installed.  Aborting."; }
+command -v vivid >/dev/null 2>&1 || { echo >&2 "I require vivid but it's not installed.  Aborting."; }
