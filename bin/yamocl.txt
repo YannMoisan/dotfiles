@@ -28,35 +28,30 @@ su - = sudo -i
 ulimit
 ulimit -s
 
-8. Installation
-dpkg --get-selections|grep
-dpkg -l|grep linux|cut -f 3 -d " "
+8. Installation debian
+dpkg -i {{path/to/file.deb}}
 dpkg -s firefox # status : fonctionne uniquement si le package est installé
-dpkg-reconfigure hddtemp (daemon at startup ?)
-apt-get update
-apt-get upgrade
-apt-get install
-apt-cache search firefox
+apt update
+apt upgrade
+apt install {{package}}
+apt search {{package}}
 add-apt-repository ppa:x/y
 sudo update-alternatives --install /usr/bin/java java /opt/jdk1.7.0_04/bin/java 1
 sudo update-alternatives --install /usr/bin/javac javac /opt/jdk1.7.0_04/bin/javac 1
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
-pacman -S ttf-inconsolata
-pacman -Sc enleve du acche les paquets non installes
 
 9. arrêt et démarrage
 
 grub-install -v
 
 10. Réseau
+arp -a #Show the current ARP table
 arp-scan -I enp4s0 -l
-curl -XPOST localhost:9200/index-attach -d mapping.json 
 curl -XPOST localhost:9200/index-attach -d mapping.json 
 dig +short yannmoisan.com
 dig yannmoisan.com
 dig test.local @127.0.0.1 (works with dnsmasq, a local DNS server)
-hciconfig hci0 down;rmmod hci_usb
 host yannmoisan.com // DNS lookup
 ifconfig eth0 192.168.10.125 netmask 255.255.255.0
 ifconfig wlan0 down
@@ -71,13 +66,11 @@ nslookup google.com #Teste le serveur dns
 route add default gw 192.168.10.1
 ssh -L 9000:localhost:80 penguen
 ssh -i ~/.ssh/emr-buying-engine.pem hadoop@ip-10-0-182-142.eu-west-1.compute.internal
-ssh -l hadoop 10.20.103.172
 ssh -l user server = ssh user@server
+ssh server -t tmux a
 ssh-add ~/.ssh/id_rsa
 ssh-copy-id
 ssh-keygen -t rsa -C "yamo93@gmail.com"
-sudo launchctl list
-sudo launchctl remove homebrew.mxcl.dnsmasq
 telnet talk.google.com 5222
 traceroute google.com
 
@@ -110,6 +103,7 @@ git config -l
 git log --oneline --graph
 git push -u origin master
 git rebase --interactive HEAD~2 #pour fusionner 2 commit
+git rebase -i --exec "sbt jobs-definitions/test" master
 git remote add origin git@github.com:YannMoisan/math.git
 git remote set-url origin git@github.com:YannMoisan/dotfiles.git
 git reset --hard HEAD~1
@@ -128,28 +122,37 @@ c. ex command
 
 find backupDvd/photos/ -name "*.[aA][vV][iI]" -ls|wc -l
 find backupDvd/photos/ -name "*.[aA][vV][iI]" -ls|awk '{T+=$7} END {print T}'
-find / -type f -size +20000k -exec ls
-find . -type f|sed 's/.*\.//'|sort|uniq # Liste les extensions de fichiers
-find . -type d \( -name "CVS" -o -name ".svn" \)
-find backupDvd/photos/ -name "*.[aA][vV][iI]" -ls|wc -l
-find backupDvd/photos/ -name "*.[aA][vV][iI]" -ls|awk '{T+=$7} END {print T}'
-find backup/application/ -size +1000k -ls
-find . -name entry*.html | xargs sed -i '4i-----'
-find . -name entry*.html | xargs sed -i '3,5s#^\s*<span class=(.*)>\(.*\)</span>#\1=\2#'
-find . -name entry*.html | xargs sed -i '1,2d'
-find src -name entry*html|xargs sed -i '1,4s/^/$/' #ajoute le caractère $ aux 4 premières lignes
-find /home/test -printf "%s:%p\n"|sort -k1n|tail -50 50 plus gros fichiers
-find
-find . -name *.sbt -exec grep -l assembly {} \;
-find . -name *.sbt -exec grep -l assembly {} \;
-find . -name *.sbt -exec grep -l assembly {} \;
 find . -name target|xargs du -sh|sort -h
-find ./dev/projects/progfun/funsets/target
-find /mnt/data/backup/photos/ -name .xvpics -type d -exec find '{}' -type f \; | wc -l
-find /mnt/data/backup/photos/ -type f -name *.* | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
-find /mnt/data/backup/photos/ -type f -name *.* | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
-find . -type f -printf %s
-find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd" \;
+find /home/test -printf "%s:%p\n"|sort -k1n|tail -50 50 plus gros fichiers
+
+find / -type f -size +20000k -exec ls
+find backup/application/ -size +1000k -ls
+
+find . -type f|sed 's/.*\.//'|sort|uniq # Liste les extensions de fichiers
+find . -type f -name *.* | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
+
+find . -type d \( -name "CVS" -o -name ".svn" \)
+
+find . -name entry*.html | xargs sed -i '4i-----'
+find . -name *.sbt -exec grep -l assembly {} \;
+
+find . -maxdepth 1 -type d \( ! -name . \)
+
+before, touch a b c
+❯ find . -exec echo {} \;
+.
+./c
+./a
+./b
+❯ find . | xargs -I _ echo _
+.
+./c
+./a
+./b
+❯ find . -exec echo {} +
+. ./c ./a ./b
+❯ find . | xargs echo
+. ./c ./a ./b
 
 exiftool "-Directory<DateTimeOriginal" -d "%Y-%m-%d" .
 
@@ -179,9 +182,19 @@ java -XX:+PrintFlagsFinal -version
 java -jar jol-cli-0.9-full.jar internals -cp /usr/local/Cellar/scala/2.13.1/libexec/lib/scala-library.jar "scala.Tuple2$mcII$sp"
 jcmd 76804 GC.class_histogram
 jinfo 49063
+jmap
 jstack 20660
 jstat -gcutil 76804
+mvn archetype:generate -DarchetypeGroupId=fr.gouv.impots.appli.commun.manzana.maven.archetypes -DarchetypeArtifactId=archetype-META -DarchetypeVersion=3.0 -DarchetypeRepository=http://repo.appli.dgfip/nexus/content/repositories/public
 scala Inc -J-XX:+UnlockDiagnosticVMOptions -J-XX:+TraceClassLoading -J-XX:+LogCompilation -J-XX:+PrintAssembly\n
+
+h. GCP/AWS
+aws --region us-east-1 ec2 describe-instances --filters 'Name=tag:capistrano::type,Values=cassandra-dmp-use1'
+aws emr list-clusters --region eu-west-1 --active | jq '.Clusters[].Name'
+aws s3 sync
+bq --project_id teads-1307 load --source_format=PARQUET --schema_update_option=ALLOW_FIELD_ADDITION --time_partitioning_field=d innov_be.test_yann "gs://teads-be/test/four/*.parquet"
+bq query --project teads-1307 "select count(*) from innov_be.test_yann"
+gsutil ls -r "gs://teads-be/tmp/bigquery/auction-feature-v3-pre-bigquery/2020/3/29/20"
 
 
 which eclipse
@@ -195,14 +208,7 @@ locate eclipse
 . .profile
 . ~/.bashrc
 ab -n 100 -c 10 http://www.yahoo.com/
-airport
 alias
-arp -a
-aws --region us-east-1 ec2 describe-instances --filters 'Name=tag:capistrano::type,Values=cassandra-dmp-use1'
-aws emr list-clusters --region eu-west-1 --active | jq '.Clusters[].Name'
-aws s3 sync
-bq --project_id teads-1307 load --source_format=PARQUET --schema_update_option=ALLOW_FIELD_ADDITION --time_partitioning_field=d innov_be.test_yann "gs://teads-be/test/four/*.parquet"
-bq query --project teads-1307 "select count(*) from innov_be.test_yann"
 cat tmp.sh >> blog.sh #concatene 2 fichiers
 cd - # Se positionne dans le précédent répertoire de travail
 chmod
@@ -222,21 +228,14 @@ env
 fc // edit last command in ivm
 fc-list
 fd -t f "^[^.]+$" ~/Dropbox # find files without extension
-fg
-fg / ctrl z
-git rebase -i --exec "sbt jobs-definitions/test" master
+fg / ctrl z #Run jobs in foreground.
 grep -lir /usr/share/tomcat7 ~/workspace2/.metadata/
-gsutil ls -r "gs://teads-be/tmp/bigquery/auction-feature-v3-pre-bigquery/2020/3/29/20"
-jstack / jstat / jmap
 ln -s /opt/apache-maven-3.0.3/bin/mvn /usr/bin/mvn
-mvn archetype:generate -DarchetypeGroupId=fr.gouv.impots.appli.commun.manzana.maven.archetypes -DarchetypeArtifactId=archetype-META -DarchetypeVersion=3.0 -DarchetypeRepository=http://repo.appli.dgfip/nexus/content/repositories/public
-mysql -u root wine < src/main/resources/cellar.sql
-mysqldump -u root -p bk_trunk
 parquet-tools meta auction_feature_v3-0-0d925473-e5df-4dea-af07-ef8165ed0554-1583906400093
 pstree
 rclone
 rclone --config rclone.conf sync source:teads-hadoop-apne1/engine/auction-feature-v3/2019/10/17/0/auction_feature_v3-0-240286b7-0c98-4272-8918-0af696c6397f-1571270400360 dest:teads-hadoop/engine/auction-feature-v3-test/2019/10/17/0
-readlink -e /usr/bin/java
+readlink -f /usr/bin/java # Follow symlinks and get the absolute path to a file
 rename
 rename -n 's/(\d{4})_?(\d{2})_?(\d{2})/\1-\2-\3/' taxes/*
 setxkbmap -layout fr -variant oss
@@ -246,12 +245,11 @@ timedatectl set-time '2013-02-12 14:45:00'
 timedatectl status
 tmux
 tmux attach -t 0
-tput colors
+tput colors #View and modify terminal settings and capabilities. Show number of colors
 tree
 unalias/alias
 unset/set
 which / whereis / type
 whois
-xrdb -query -all
-find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c cd
+xrdb -query -all #X window server's resource database utility for Unix-like systems
 
