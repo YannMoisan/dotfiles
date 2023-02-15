@@ -7,16 +7,12 @@ quickfixsigns_vim | https://github.com/tomtom/quickfixsigns_vim
 suckless.vim | https://github.com/fabi1cazenave/suckless.vim
 syntastic | https://github.com/scrooloose/syntastic.git
 tagbar | https://github.com/majutsushi/tagbar.git
-tern_for_vim | https://github.com/marijnh/tern_for_vim.git
 vim-airline | https://github.com/bling/vim-airline
 vim-colors-solarized | https://github.com/altercation/vim-colors-solarized
 vim-commentary | https://github.com/tpope/vim-commentary
 vim-css3-syntax | https://github.com/hail2u/vim-css3-syntax.git
-vim-go | https://github.com/fatih/vim-go.git
-vim-javascript | https://github.com/pangloss/vim-javascript.git
 vim-json | https://github.com/elzr/vim-json
 vim-repeat | https://github.com/tpope/vim-repeat.git
-vim-scala | https://github.com/derekwyatt/vim-scala
 vim-surround | https://github.com/tpope/vim-surround
 vim-unimpaired | https://github.com/tpope/vim-unimpaired.git
 vim-visual-star-search | git@github.com:nelstrom/vim-visual-star-search.git

@@ -182,10 +182,7 @@ augroup customfiletypedetect
   autocmd FileType json setlocal equalprg=python\ -mjson.tool
   "map <leader>jt <Esc>:%!python -m json.tool<CR>
 
-  au FileType scala setlocal shiftwidth=2 tabstop=2
-  au BufEnter *.scala setl formatprg=java\ -jar\ /opt/scalariform/scalariform.jar\ --stdin\ --stdout
   au FileType yaml setlocal shiftwidth=2 tabstop=2
-  au BufWritePost *.mm !refresh-store
   au filetype qf map <buffer> <cr> <cr>
 augroup END
 "}}}
@@ -252,15 +249,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 set noshowmode
 
-" Tern
-let tern#is_show_argument_hints_enabled=1
-
-" cra.vim
-autocmd! BufWritePost cra.vim source <afile>
-let g:NbCPPerYear = 22
-let g:NbRTPerYear = 9
-let g:NbRemainingCP = 21 " remaining CP end of 2013
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -277,25 +265,6 @@ let g:syntastic_yaml_checkers = ["jsyaml"]
 " gem install mdl
 " brew install checkbashisms
 " npm install -g jsyaml
-"}}}
-
-" Scala"{{{
-"Error format for SBT, and shortcut to open SBT quickfix file :
-"-----vim.rc-------
-set errorformat=%E\ %#[error]\ %#%f:%l:\ %m,%-Z\ %#[error]\ %p^,%-C\ %#[error]\ %m
-set errorformat+=,%W\ %#[warn]\ %#%f:%l:\ %m,%-Z\ %#[warn]\ %p^,%-C\ %#[warn]\ %m
-set errorformat+=,%-G%.%#
-noremap <silent> <Leader>ff :cf /tmp/sbt.quickfix<CR>
-noremap <silent> <Leader>fn :cn<CR>
-"}}}
-
-" AXA related stuff "{{{
-let g:scala_sort_across_groups=1
-let g:scala_first_party_namespaces='\(com.axa\|axa\)'
-set wildignore+=*/node_modules/*
-set wildignore+=*/tomcat_runner/*
-set wildignore+=*/jetty_runner/*
-set wildignore+=*/thirdparties/*
 "}}}
 
 "Learn Vim Script"{{{
