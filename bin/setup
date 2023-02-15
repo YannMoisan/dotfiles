@@ -23,16 +23,6 @@ setup_vim() {
     gws update
 }
 
-setup_x() {
-    curl -o http://qwerty-lafayette.org/releases/lafayette_linux_v0.5.xkb
-    ln -s "$SETUP_PROJECTS/dotfiles/.xinitrc" ~/.xinitrc
-    ln -s "$SETUP_PROJECTS/dotfiles/.xresources" ~/.xresources
-    ln -s "$SETUP_PROJECTS/dotfiles/xresources.dark" ~/.xresources.dark
-    mkdir ~/.config
-    ln -s "$SETUP_PROJECTS/dotfiles/i3" ~/.config/i3
-    ln -s "$SETUP_PROJECTS/dotfiles/i3status" ~/.config/i3status
-}
-
 setup_zsh() {
     ln -s "$SETUP_PROJECTS/prezto" ~/.zprezto
     ln -s "$SETUP_PROJECTS/dotfiles/bin" ~/bin
@@ -48,7 +38,6 @@ setup_zsh() {
 setup_linux() {
     clone
     setup_git
-    setup_x
     setup_zsh
 }
 
