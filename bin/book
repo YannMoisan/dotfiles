@@ -1,5 +1,12 @@
 #!/bin/bash
-cat <<EOF | edit-selected-files dmenu
-/mnt/data/backup/application/divers/TODO.txt
-/mnt/data/backup/application/divers/pad.txt
+doc=~/Dropbox/Documents
+cat <<EOF | edit-selected-files fzf
+$doc/TODO.txt
+$doc/english/english-courses.txt
+$doc/2022-jobs
+$doc/2017-05-24_inventory.md
+$doc/health/sante.ods
+$doc/finance/2020-money.ods
+$HOME/.zshrc
+$HOME/.zpreztorc
 EOF

@@ -1,0 +1,13 @@
+#!/bin/bash
+# This Bash script takes a filename as an argument and opens it in either LibreOffice Calc or Vim based on its file extension.
+
+filename="$1"
+
+case "${filename##*.}" in
+    ods)
+        open "$filename"
+        ;;
+    *)
+        vim "$filename"
+        ;;
+esac

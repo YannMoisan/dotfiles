@@ -24,4 +24,4 @@ done
 
 # Reassigns standard input back to the keyboard
 exec </dev/tty
-$EDITOR $files
+open-based-on-ext $files
