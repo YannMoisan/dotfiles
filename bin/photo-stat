@@ -1,19 +1,19 @@
-#! /bin/sh
-DIR=/mnt/data/backup/photos/
+#! /bin/bash
+dir=~/backup/Photos
 
 echo "Count nb files"
-find $DIR -type f | wc -l
+find $dir -type f | wc -l
 
 echo "Count nb files by extensions"
-find $DIR -type f -name "*.*" | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
+find $dir -type f -name "*.*" | sed -e 's/.*\.//' | sort | uniq -c | sort -nr
 
 #echo "Count file size by extensions"
-#ftypes=$(find $DIR -type f | grep -E ".*\.[a-zA-Z0-9]*$" | sed -e 's/.*\(\.[a-zA-Z0-9]*\)$/\1/' | sort | uniq)
+#ftypes=$(find $dir -type f | grep -E ".*\.[a-zA-Z0-9]*$" | sed -e 's/.*\(\.[a-zA-Z0-9]*\)$/\1/' | sort | uniq)
 #for ft in $ftypes
 #do
 #echo -n "$ft "
-#find $DIR -name "*${ft}" -exec ls -l {} \; | awk '{total += $5} END {print total}'
+#find $dir -name "*${ft}" -exec ls -l {} \; | awk '{total += $5} END {print total}'
 #done
 #
 echo "10 biggest files"
-find /mnt/data/backup/photos/ -type f -printf "%s %p\n" | sort -nr | head -10
+find $dir -type f -printf "%s %p\n" | sort -nr | head -10
