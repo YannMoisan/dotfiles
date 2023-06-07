@@ -228,6 +228,7 @@ env
 fc // edit last command in ivm
 fc-list
 fd -t f "^[^.]+$" ~/Dropbox # find files without extension
+fd -t f '^[^.]+$' ~/Dropbox/Documents/tech --exec mv {} {}.txt
 fg / ctrl z #Run jobs in foreground.
 grep -lir /usr/share/tomcat7 ~/workspace2/.metadata/
 ln -s /opt/apache-maven-3.0.3/bin/mvn /usr/bin/mvn
