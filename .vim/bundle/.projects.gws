@@ -1,5 +1,4 @@
 Dockerfile | https://github.com/ekalinin/Dockerfile.vim.git
-YouCompleteMe | https://github.com/Valloric/YouCompleteMe.git
 ack.vim | https://github.com/mileszs/ack.vim
 committia.vim | git@github.com:rhysd/committia.vim.git
 ctrlp.vim | https://github.com/kien/ctrlp.vim

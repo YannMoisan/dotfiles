@@ -168,6 +168,8 @@ nnoremap <leader>ac 0f"80i <esc>30\|dt"
 nnoremap <leader>tn /TODOo    [ ] 
 nnoremap <leader>tx ^lrX
 nnoremap <leader>tw dd/@waiting<CR>p
+
+nnoremap <leader>rm :call delete(expand('%')) \| bdelete!
 "}}}
 
 " Autocommand"{{{
