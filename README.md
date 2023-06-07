@@ -101,10 +101,17 @@ generated from the CLI with `dot -Tpng installation-order.dot -o installation-o
 
 ## Update the system
 
-- prezto
+- prezto [syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
+    - git remote add upstream https://github.com/sorin-ionescu/prezto
 	- git fetch upstream
 	- git merge upstream/master
 	- git submodule update --init --recursive
+```
+Failed to merge submodule modules/autosuggestions/external (commits don't follow merge-base)
+CONFLICT (submodule): Merge conflict in modules/autosuggestions/external
+    ❯ LANGUAGE=en_US.utf8 git submodule update
+    Skipping unmerged submodule modules/autosuggestions/external
+```
 - brew
 	- brew update
 	- brew upgrade
