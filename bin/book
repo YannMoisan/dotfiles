@@ -2,6 +2,7 @@
 doc=~/Dropbox/Documents
 cat <<EOF | edit-selected-files fzf
 $doc/TODO.txt
+$doc/holidays/summary.txt
 $doc/english/english-courses.txt
 $doc/2022-jobs
 $doc/2017-05-24_inventory.md
