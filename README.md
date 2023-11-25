@@ -36,31 +36,6 @@ curl https://raw.githubusercontent.com/YannMoisan/dotfiles/master/scripts/setup 
 - terminal : [urxvt](https://wiki.archlinux.org/index.php/Rxvt-unicode)
 
 #### Keyboard shortcuts
-##### i3
-|shortcut|description|
-|---|---|
-|Super+Enter|open a terminal|
-|Super+[hjkl]|focus window|
-|Super+Shift+[hjkl]|move focus window|
-|Super+[asdf]|switch between mode|
-|Super+[ui]|prev/next workspace|
-|Super+[r]|reload|
-|Super+Shift+Backspace|restart|
-|Super+Ctrl+Backspace|exit|
-|Super+o|split v|
-|Super+Shift+o|split h|
-
-##### urxvt
-
-|shortcut|description|
-|---|---|
-|Ctrl+Alt+C|Copy to clipboard|
-|Ctrl+Alt+V|Paste from clipboard|
-|Ctrl+[↓↑]|increase/decrease font size|
-|Ctrl+=|back to default size|
-|Ctrl+/|display current font in a pop-up|
-|Ctrl+Delete|open last url in a browser|
-|Alt+Delete|list url in a pop-up|
 
 ##### tmux
 |shortcut|description|
