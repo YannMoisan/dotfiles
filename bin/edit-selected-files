@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # As a geek, I used to live in plain text files
 # This script helps me to edit them easily
 
