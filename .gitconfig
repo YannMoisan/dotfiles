@@ -23,6 +23,7 @@
 	delete-merged = !git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d
 [push]
 	default = simple
+	autoSetupRemote = true
 [merge]
 	tool = vimdiff
 	stat = true
