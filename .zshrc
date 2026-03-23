@@ -105,6 +105,9 @@ fi
 source ${ZIM_HOME}/init.zsh
 # }}} End configuration added by Zim Framework install
 
+export PATH="$PATH:/Users/yamo/Library/Application Support/Coursier/bin"
+export JAVA_HOME="/Users/yamo/Library/Caches/Coursier/arc/https/github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.7%252B6/OpenJDK21U-jdk_x64_mac_hotspot_21.0.7_6.tar.gz/jdk-21.0.7+6/Contents/Home"
+
 DOTFILES=~/projects/perso/dotfiles
 
 SPARK_DIR=~/opt/spark
@@ -143,8 +146,6 @@ source <(fzf --zsh)
 # https://github.com/zsh-users/zsh-autosuggestions?tab=readme-ov-file#suggestion-highlight-style
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
-alias coursier_update='curl -Lo ~/opt/bin/coursier https://git.io/coursier-cli'
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -168,9 +169,6 @@ fif() {
 export DYLD_LIBRARY_PATH="/home/yamo/opt/async-profiler-2.9-macos/build/"
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 # source /usr/local/opt/chruby/share/chruby/chruby.sh
 # source /usr/local/opt/chruby/share/chruby/auto.sh
 # chruby ruby-3.1.3

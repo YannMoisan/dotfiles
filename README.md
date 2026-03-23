@@ -74,6 +74,8 @@ generated from the CLI with `dot -Tpng installation-order.dot -o installation-o
 - brew
 	- brew update
 	- brew upgrade
+- cs
+    - cs update
 - vim plugins
 	- gws ff
 	
