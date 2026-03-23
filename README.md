@@ -6,7 +6,7 @@
   
 ## Software choices
 
-- shell : [zsh](https://wiki.archlinux.org/index.php/zsh) with [prezto](https://github.com/sorin-ionescu/prezto) and [powelevel10k](https://github.com/romkatv/powerlevel10k) prompt
+- shell : [zsh](https://wiki.archlinux.org/index.php/zsh) with [zim](https://zimfw.sh/) and [powelevel10k](https://github.com/romkatv/powerlevel10k) prompt
 
 ### why zsh over bash
 
@@ -16,14 +16,6 @@
 - Smarter completion for commands like `git`, `ssh`
 - Recursive globbing `vim **/*.md` opens all markdown files in the current dir and descendants
 - Fish-like features: [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
-
-### prezto modules
-
-- archive: add handy functions `archive`, `unarchive`
-- directory: add `d` and `1..9` to navigate through pushed directories. Also configures `AUTO_CD`, `CDABLE_VARS`
-- editor: add `bindkey-all` to display bind keys
-- fasd: quick navigation through frecent files and directories. add `j` and `,<Tab>`
-- history: add `history-stat`
 
 ## How to install
 ### Linux
@@ -76,17 +68,9 @@ generated from the CLI with `dot -Tpng installation-order.dot -o installation-o
 
 ## Update the system
 
-- prezto [syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
-    - git remote add upstream https://github.com/sorin-ionescu/prezto
-	- git fetch upstream
-	- git merge upstream/master
-	- git submodule update --init --recursive
-```
-Failed to merge submodule modules/autosuggestions/external (commits don't follow merge-base)
-CONFLICT (submodule): Merge conflict in modules/autosuggestions/external
-    ❯ LANGUAGE=en_US.utf8 git submodule update
-    Skipping unmerged submodule modules/autosuggestions/external
-```
+- zimfw
+    - zimfw update
+    - zimfw upgrade
 - brew
 	- brew update
 	- brew upgrade

@@ -5,7 +5,6 @@ show_usage() {
 }
 
 clone() {
-    git clone --recursive git@github.com:YannMoisan/prezto.git "$SETUP_PROJECTS/prezto"
     git clone git@github.com:YannMoisan/dotfiles.git "$SETUP_PROJECTS/dotfiles"
 }
 
@@ -24,15 +23,13 @@ setup_vim() {
 }
 
 setup_zsh() {
-    ln -s "$SETUP_PROJECTS/prezto" ~/.zprezto
     ln -s "$SETUP_PROJECTS/dotfiles/bin" ~/bin
 
-    ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
-    ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
-    ln -s ~/.zprezto/runcoms/zpreztorc ~/.zpreztorc
-    ln -s ~/.zprezto/runcoms/zprofile ~/.zprofile
-    ln -s ~/.zprezto/runcoms/zshenv ~/.zshenv
-    ln -s ~/.zprezto/runcoms/zshrc ~/.zshrc
+    ln -s "$SETUP_PROJECTS/dotfiles/.zshrc" ~/.zshrc
+    ln -s "$SETUP_PROJECTS/dotfiles/.zimrc" ~/.zimrc
+    ln -s "$SETUP_PROJECTS/dotfiles/.p10k.zsh" ~/.p10k.zsh
+
+    zimfw install
 }
 
 setup_linux() {
