@@ -39,3 +39,5 @@
 	prune = true
 [rebase]
 	autostash = true
+[includeIf "gitdir:~/projects/swan/"]
+    path = ~/.gitconfig.swan

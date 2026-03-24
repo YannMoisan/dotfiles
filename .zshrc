@@ -177,3 +177,5 @@ export DYLD_LIBRARY_PATH="/home/yamo/opt/async-profiler-2.9-macos/build/"
 #   [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="$HOME/.local/bin:$PATH"
+
+source ~/.zshrc.swan
