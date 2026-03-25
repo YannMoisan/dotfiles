@@ -1,3 +1,6 @@
+# https://github.com/zimfw/git?tab=readme-ov-file#settings
+zstyle ':zim:git' aliases-prefix 'g'
+
 # Start configuration added by Zim Framework install {{{
 #
 # User configuration sourced by interactive shells
@@ -105,6 +108,11 @@ fi
 source ${ZIM_HOME}/init.zsh
 # }}} End configuration added by Zim Framework install
 
+# ❯ type -a gh
+# gh is an alias for git help
+# gh is /opt/homebrew/bin/gh
+unalias gh
+
 export PATH="$PATH:/Users/yamo/Library/Application Support/Coursier/bin"
 export JAVA_HOME="/Users/yamo/Library/Caches/Coursier/arc/https/github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.7%252B6/OpenJDK21U-jdk_x64_mac_hotspot_21.0.7_6.tar.gz/jdk-21.0.7+6/Contents/Home"
 
@@ -177,5 +185,11 @@ export DYLD_LIBRARY_PATH="/home/yamo/opt/async-profiler-2.9-macos/build/"
 #   [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="$HOME/.local/bin:$PATH"
+
+shadow() {
+  for a in $(alias | sed "s/=.*//; s/^alias //"); do
+    whence -p "$a" &>/dev/null && echo "$a shadows $(whence -p "$a")"
+  done
+}
 
 source ~/.zshrc.swan
